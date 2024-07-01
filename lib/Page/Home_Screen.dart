@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vinteum/Common/color.dart';
+import 'package:vinteum/Common/dialog.dart';
 import 'package:vinteum/Page/Group_List.dart';
 import 'package:vinteum/Page/Timetable_Screen.dart';
 
@@ -35,7 +36,17 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: [
                   Icon(Icons.notifications_none),
                   SizedBox(width: 15),
-                  Image.asset("Assets/img/settings.png")
+                  InkWell(
+                    onTap: () {
+                      showDialog(
+                        context: context,
+                        builder: (context) {
+                          return settingDialog();
+                        },
+                      );
+                    },
+                      child: Image.asset("Assets/img/settings.png")
+                  )
                 ],
               ),
               Padding(
