@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:vinteum/Common/color.dart';
 import 'package:vinteum/config/variable.dart';
 
-class DetailScreen extends StatelessWidget {
-  const DetailScreen({super.key});
+class DetailScreen2 extends StatelessWidget {
+  const DetailScreen2({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,35 +23,47 @@ class DetailScreen extends StatelessWidget {
         body: Column(
           children: [
             Container(
-              height: 30,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  IconButton(onPressed: (){},icon: Icon(Icons.person),),
-                  Text('data     '), //back에서 인원수 데이터 받아오기
-                ],
-              ),
+              height: 50,
             ),
             Container(
-              height:  30,
-              child: Text('공통으로 비는 시간',
-                style: TextStyle(
-                    fontSize: 20
-                ),
-              ),
-            ),
-            Container(
-              // height: ratio.height * 100,
-              // weight: ratio.weight * 70,
+              height: 55,
+              width: 350,
               decoration: BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage('assets/images/ex_img.png')
+                border: Border.all(
+                  width: 2,
+                  color: Colors.black
                 ),
               ),
-
             ),
-          ],
+            Container(
+              height: 50,
+            ),
+            Container(
+              height: 55,
+              width: 350,
+              decoration: BoxDecoration(
+                border: Border.all(
+                    width: 2,
+                    color: Colors.black
+                ),
+              ),
+            ),
+            Container(
+              height: 10,
+            ),
+            Container(
+              height: 55,
+              width: 350,
+              decoration: BoxDecoration(
+                border: Border.all(
+                    width: 2,
+                    color: Colors.black
+                ),
+              ),
+            ),
 
+
+         ],
         ),
 
       ),
