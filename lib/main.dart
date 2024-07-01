@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'widget/root_tab.dart';
-
+import 'Page/splash_Screen.dart';
 late Size ratio;
 
 void main() {
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
     ratio = Size(MediaQuery.sizeOf(context).width / 412, MediaQuery.sizeOf(context).height / 892);
     return MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: RootTab()
+        home: SplashScreen()
     );
   }
 }
