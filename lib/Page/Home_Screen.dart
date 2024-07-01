@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:vinteum/Common/color.dart';
 import 'package:vinteum/Page/Group_List.dart';
+import 'package:vinteum/Page/Timetable_Screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -38,7 +39,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 15),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 32, vertical: 15),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -53,21 +55,23 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ),
                     InkWell(
-                      onTap: () {},
-                        child: Image.asset("Assets/img/edit.png")
-                    )
+                        onTap: () {}, child: Image.asset("Assets/img/edit.png"))
                   ],
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 60, vertical: 10),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 60, vertical: 10),
                 child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15)
-                    )
-                  ),
-                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15))),
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => TimetableScreen(selected: false)));
+                    },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -75,31 +79,31 @@ class _HomeScreenState extends State<HomeScreen> {
                         SizedBox(width: 12),
                         Text("시간표 관리")
                       ],
-                    )
-                ),
+                    )),
               ),
               SizedBox(height: 53),
               Align(
                 alignment: Alignment.bottomLeft,
-                child: Text(
-                    "내 그룹 보기",
-                style: TextStyle(fontSize: 32, color: VinTeumColors.grey1)),
+                child: Text("내 그룹 보기",
+                    style: TextStyle(fontSize: 32, color: VinTeumColors.grey1)),
               ),
-              data.length == 0 ?
-                  Column(
-                    children: [
-                      SizedBox(height: 130),
-                      Text("그룹을 추가 해주세요!", style: TextStyle(fontSize: 20, color: VinTeumColors.grey1))
-                    ],
-                  ) :
-              Expanded(
-                child: ListView.builder(
-                  scrollDirection: Axis.vertical,
-                    itemCount: data.length,
-                    itemBuilder: (context, index){
-                      return data[index];
-                    }),
-              ),
+              data.length == 0
+                  ? Column(
+                      children: [
+                        SizedBox(height: 130),
+                        Text("그룹을 추가 해주세요!",
+                            style: TextStyle(
+                                fontSize: 20, color: VinTeumColors.grey1))
+                      ],
+                    )
+                  : Expanded(
+                      child: ListView.builder(
+                          scrollDirection: Axis.vertical,
+                          itemCount: data.length,
+                          itemBuilder: (context, index) {
+                            return data[index];
+                          }),
+                    ),
             ],
           ),
         ),
