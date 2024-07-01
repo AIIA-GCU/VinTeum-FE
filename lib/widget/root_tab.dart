@@ -49,7 +49,7 @@ class _RootTabState extends State<RootTab> with SingleTickerProviderStateMixin {
       bottomNavigationBar: BottomNavigationBar(
           selectedItemColor: Colors.black,
           unselectedItemColor: Colors.black,
-          backgroundColor: VinTeumColors.grey1,
+          backgroundColor: VinTeumColors.grey2,
           selectedFontSize: 0,
           selectedLabelStyle: TextStyle(color: Colors.black),
           unselectedLabelStyle: TextStyle(color: Colors.black),
@@ -61,9 +61,9 @@ class _RootTabState extends State<RootTab> with SingleTickerProviderStateMixin {
           showUnselectedLabels: true,
           currentIndex: index,
           items: [
-            BottomNavigationBarItem(icon: Icon(Icons.home_outlined,size: 37.5,), label: ''),
-            BottomNavigationBarItem(icon: Icon(CupertinoIcons.plus_circle,size: 37.5), label: ''),
-            BottomNavigationBarItem(icon: Icon(Icons.search,size: 37.5), label: ''),
+            BottomNavigationBarItem(icon: Icon(CupertinoIcons.home,size: 45,), label: ''),
+            BottomNavigationBarItem(icon: Icon(CupertinoIcons.plus_circle,size: 45), label: ''),
+            BottomNavigationBarItem(icon: Icon(Icons.search,size: 45), label: ''),
           ]
       ),
     );
