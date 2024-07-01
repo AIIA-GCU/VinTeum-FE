@@ -39,6 +39,7 @@ class _RootTabState extends State<RootTab> with SingleTickerProviderStateMixin {
   Widget build(BuildContext context) {
     return Scaffold(
       body: TabBarView(
+          physics: NeverScrollableScrollPhysics(),
           controller: controller,
           children: [
             HomeScreen(),
