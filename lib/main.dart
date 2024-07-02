@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'widget/root_tab.dart';
 import 'Page/splash_Screen.dart';
 late Size ratio;
 

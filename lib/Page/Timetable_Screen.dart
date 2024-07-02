@@ -60,7 +60,7 @@ class _TimetableScreenState extends State<TimetableScreen> {
             Expanded(
               child: Container(
                 color: VinTeumColors.grey2,
-                child: Image.asset("Assets/img/unselected.png")
+                child: Image.asset("assets/img/unselected.png")
               ),
             ):
             Expanded(

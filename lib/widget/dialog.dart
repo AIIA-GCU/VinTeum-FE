@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:vinteum/Common/color.dart';
-import 'package:vinteum/widget/Group_List.dart';
-import 'package:vinteum/Page/Timetable_Screen.dart';
 
 class settingDialog extends StatefulWidget {
   const settingDialog({super.key});

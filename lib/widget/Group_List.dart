@@ -2,8 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:vinteum/Common/color.dart';
-import 'package:vinteum/Page/Home_Screen.dart';
-import 'package:vinteum/Page/Make_Screen.dart';
 
 class GroupList extends StatelessWidget {
   final String title;
