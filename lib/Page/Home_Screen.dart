@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vinteum/Common/color.dart';
-import 'package:vinteum/Common/dialog.dart';
+import 'package:vinteum/widget/dialog.dart';
 import 'package:vinteum/Page/Group_List.dart';
 import 'package:vinteum/Page/Timetable_Screen.dart';
 
