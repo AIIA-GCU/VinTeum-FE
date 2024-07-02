@@ -38,7 +38,7 @@ class GroupList extends StatelessWidget {
                 Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Image.asset("Assets/img/user.png"),
+                    Image.asset("assets/img/user.png"),
                     Text(
                         number,
                         style: TextStyle(
@@ -50,7 +50,7 @@ class GroupList extends StatelessWidget {
               ],
             ),
             Spacer(),
-            Image.asset("Assets/img/navigate.png")
+            Image.asset("assets/img/navigate.png")
           ],
         ),
 

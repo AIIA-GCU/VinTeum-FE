@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:vinteum/Common/color.dart';
 import 'package:vinteum/widget/dialog.dart';
-import 'package:vinteum/Page/Group_List.dart';
+import 'package:vinteum/widget/Group_List.dart';
 import 'package:vinteum/Page/Timetable_Screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -17,12 +17,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     List<Widget> data = [
-      // GroupList(title: "그룹1", number: "5"),
-      // GroupList(title: "그룹2", number: "1"),
-      // GroupList(title: "그룹3", number: "3"),
-      // GroupList(title: "그룹4", number: "2"),
-      // GroupList(title: "그룹5", number: "2"),
-      // GroupList(title: "그룹6", number: "4"),
+      GroupList(title: "그룹1", number: "5"),
     ];
     return SafeArea(
       child: Scaffold(
@@ -45,7 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         },
                       );
                     },
-                      child: Image.asset("Assets/img/settings.png")
+                      child: Image.asset("assets/img/settings.png")
                   )
                 ],
               ),
@@ -55,7 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Image.asset("Assets/img/profile.png"),
+                    Image.asset("assets/img/profile.png"),
                     SizedBox(width: 12),
                     Expanded(
                       child: Padding(
@@ -66,7 +61,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ),
                     InkWell(
-                        onTap: () {}, child: Image.asset("Assets/img/edit.png"))
+                        onTap: () {}, child: Image.asset("assets/img/edit.png"))
                   ],
                 ),
               ),
