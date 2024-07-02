@@ -1,10 +1,74 @@
 import 'package:flutter/material.dart';
+import 'package:vinteum/main.dart';
+import 'package:vinteum/Common/color.dart';
 
 class SearchScreen extends StatelessWidget {
   const SearchScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Container(
+      width: double.infinity,
+      height: double.infinity,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          SizedBox(
+            height: ratio.height * 86,
+          ),
+          Text(
+            "그룹 참여",
+            style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
+          ),
+          SizedBox(
+            height: ratio.height * 96,
+          ),
+          Row(
+            children: [
+              SizedBox(
+                width: ratio.width * 12,
+              ),
+              Text(
+                "참여코드를 입력하세요.",
+                style: TextStyle(fontSize: 24),
+              ),
+            ],
+          ),
+          SizedBox(
+            height: ratio.height * 21,
+          ),
+          Container(
+            width: ratio.width * 317,
+            height: ratio.height * 47,
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: VinTeumColors.borderColor,
+                width: 1
+              ),
+              borderRadius: BorderRadius.circular(8)
+            ),
+            child: TextField(
+              textAlign: TextAlign.center,
+              decoration: InputDecoration(
+                border: InputBorder.none,
+                hintText: "참여코드를 입력하세요.",
+                hintStyle: TextStyle(color: Colors.black, fontSize: 14),
+              ),
+            )
+          ),
+          SizedBox(
+            height: ratio.height * 101,
+          ),
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20)),
+                backgroundColor: VinTeumColors.primaryColor),
+            onPressed: () {},
+            child: Text("참여", style: TextStyle(color: Colors.white)),
+          ),
+        ],
+      ),
+    );
   }
 }
