@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:vinteum/Common/color.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:vinteum/main.dart';
 
 class TimetableScreen extends StatefulWidget {
   const TimetableScreen({super.key, required this.selected});
@@ -85,7 +86,7 @@ class _TimetableScreenState extends State<TimetableScreen> {
                       },
                     child: Text("등록", style: TextStyle(color: Colors.white)),
                   ),
-                  SizedBox(width: 63),
+                  SizedBox(width: ratio.width * 63),
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
                         shape: RoundedRectangleBorder(

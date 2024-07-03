@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:vinteum/Common/color.dart';
+import 'package:vinteum/main.dart';
 
 class GroupList extends StatelessWidget {
   final String title;
@@ -42,7 +43,7 @@ class GroupList extends StatelessWidget {
                         style: TextStyle(
                             fontSize: 24, color: Colors.black)
                     ),
-                    SizedBox(width: 40)
+                    SizedBox(width: ratio.width * 40)
                   ],
                 )
               ],

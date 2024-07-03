@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vinteum/Common/color.dart';
+import 'package:vinteum/main.dart';
 
 class settingDialog extends StatefulWidget {
   const settingDialog({super.key});
@@ -42,7 +43,7 @@ class _settingDialogState extends State<settingDialog> {
                             }),
                       ],
                     ),
-                    SizedBox(height: 20),
+                    SizedBox(height: ratio.height * 24),
                     Row(
                       children: [
                         Text("알림", style: TextStyle(fontSize: 24)),
@@ -54,7 +55,7 @@ class _settingDialogState extends State<settingDialog> {
                             }),
                       ],
                     ),
-                    SizedBox(height: 20),
+                    SizedBox(height: ratio.height * 33),
                     OutlinedButton(
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.white,
@@ -67,13 +68,13 @@ class _settingDialogState extends State<settingDialog> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            Icon(Icons.logout, color: VinTeumColors.grey3),
-                            SizedBox(width: 12),
-                            Text("로그아웃", style: TextStyle(color: VinTeumColors.grey3),)
+                            Image.asset("assets/img/logout.png"),
+                            SizedBox(width: ratio.width * 12),
+                            Text("로그아웃", style: TextStyle(color: VinTeumColors.grey3, fontSize: 16))
                           ],
                         ),
                     ),
-                    SizedBox(height: 20),
+                    SizedBox(height: ratio.height * 20),
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
                           shape: RoundedRectangleBorder(

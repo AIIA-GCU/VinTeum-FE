@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vinteum/Common/color.dart';
+import 'package:vinteum/main.dart';
 import 'package:vinteum/widget/dialog.dart';
 import 'package:vinteum/widget/Group_List.dart';
 import 'package:vinteum/Page/Timetable_Screen.dart';
@@ -30,7 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Icon(Icons.notifications_none),
-                  SizedBox(width: 15),
+                  SizedBox(width: ratio.width * 15),
                   InkWell(
                     onTap: () {
                       showDialog(
@@ -51,7 +52,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Image.asset("assets/img/profile.png"),
-                    SizedBox(width: 12),
+                    SizedBox(width: ratio.width * 12),
                     Expanded(
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -82,7 +83,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Icon(Icons.folder_outlined),
-                        SizedBox(width: 12),
+                        SizedBox(width: ratio.width * 12),
                         Text("시간표 관리")
                       ],
                     )),
@@ -96,7 +97,7 @@ class _HomeScreenState extends State<HomeScreen> {
               data.length == 0
                   ? Column(
                       children: [
-                        SizedBox(height: 130),
+                        SizedBox(height: ratio.height * 130),
                         Text("그룹을 추가 해주세요!",
                             style: TextStyle(
                                 fontSize: 20, color: VinTeumColors.grey1))
