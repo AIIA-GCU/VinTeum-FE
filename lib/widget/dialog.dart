@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:vinteum/Common/color.dart';
-import 'package:vinteum/main.dart';
 
 class settingDialog extends StatefulWidget {
   const settingDialog({super.key});
@@ -26,13 +25,13 @@ class _settingDialogState extends State<settingDialog> {
           backgroundColor: Colors.white,
           surfaceTintColor: Colors.transparent,
           actions: <Widget>[
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 16),
-              child: Container(
-                width: double.maxFinite,
-                child: Column(
-                  children: [
-                    Row(
+            Container(
+              width: double.maxFinite,
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 16),
+                    child: Row(
                       children: [
                         Text("다크 모드", style: TextStyle(fontSize: 24)),
                         Spacer(),
@@ -43,49 +42,48 @@ class _settingDialogState extends State<settingDialog> {
                             }),
                       ],
                     ),
-                    SizedBox(height: ratio.height * 24),
-                    Row(
-                      children: [
-                        Text("알림", style: TextStyle(fontSize: 24)),
-                        Spacer(),
-                        Switch(value: notification,
-                            onChanged: (value) {
-                              setState(() => notification = value);
-                              notification = value;
-                            }),
-                      ],
-                    ),
-                    SizedBox(height: ratio.height * 33),
-                    OutlinedButton(
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.white,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10)
-                            ),
-                          padding: EdgeInsets.symmetric(horizontal: 17, vertical: 20)
-                        ),
-                        onPressed: () {},
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Image.asset("assets/img/logout.png"),
-                            SizedBox(width: ratio.width * 12),
-                            Text("로그아웃", style: TextStyle(color: VinTeumColors.grey3, fontSize: 16))
-                          ],
-                        ),
-                    ),
-                    SizedBox(height: ratio.height * 20),
-                    ElevatedButton(
+                  ),
+                  Row(
+                    children: [
+                      Text("알림", style: TextStyle(fontSize: 24)),
+                      Spacer(),
+                      Switch(value: notification,
+                          onChanged: (value) {
+                            setState(() => notification = value);
+                            notification = value;
+                          }),
+                    ],
+                  ),
+                  SizedBox(height: 20),
+                  OutlinedButton(
                       style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.white,
                           shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20)),
-                          backgroundColor: VinTeumColors.primaryColor
+                              borderRadius: BorderRadius.circular(10)
+                          ),
+                        padding: EdgeInsets.symmetric(horizontal: 17, vertical: 20)
                       ),
                       onPressed: () {},
-                      child: Text("저장", style: TextStyle(color: Colors.white)),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Icon(Icons.logout, color: VinTeumColors.grey3),
+                          SizedBox(width: 12),
+                          Text("로그아웃", style: TextStyle(color: VinTeumColors.grey3),)
+                        ],
+                      ),
+                  ),
+                  SizedBox(height: 20),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20)),
+                        backgroundColor: VinTeumColors.primaryColor
                     ),
-                  ],
-                ),
+                    onPressed: () {},
+                    child: Text("저장", style: TextStyle(color: Colors.white)),
+                  ),
+                ],
               ),
             ),
           ],
