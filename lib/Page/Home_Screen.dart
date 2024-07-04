@@ -13,7 +13,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  TextEditingController _nameController = TextEditingController(text: "사용자");
+
 
   @override
   Widget build(BuildContext context) {
@@ -51,24 +51,40 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Image.asset("assets/img/profile.png"),
-                    SizedBox(width: ratio.width * 12),
+                    Image.asset("assets/img/account_circle.png"),
+                    SizedBox(width: ratio.width * 6),
                     Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 20),
-                        child: TextField(
-                          controller: _nameController,
-                        ),
+                      child: Column(
+                        children: [
+                          Text("사용자",
+                              style: TextStyle(
+                                fontSize: 27,
+                          )),
+                          Divider(height: 5,
+                              thickness: 1,
+                              indent: 3,
+                              endIndent: 3,
+                              color: Colors.black)
+                        ],
                       ),
                     ),
+
                     InkWell(
-                        onTap: () {}, child: Image.asset("assets/img/edit.png"))
+                        onTap: () {
+                          showDialog(
+                            context: context,
+                            builder: (context) {
+                              return nameDialog();
+                            },
+                          );
+                        },
+                        child: Image.asset("assets/img/edit.png"))
                   ],
                 ),
               ),
               Padding(
                 padding:
-                    const EdgeInsets.symmetric(horizontal: 60, vertical: 10),
+                    const EdgeInsets.symmetric(horizontal: 60, vertical: 5),
                 child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                         shape: RoundedRectangleBorder(
@@ -84,7 +100,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       children: [
                         Icon(Icons.folder_outlined),
                         SizedBox(width: ratio.width * 12),
-                        Text("시간표 관리")
+                        Text("시간표 관리"),
+
                       ],
                     )),
               ),
