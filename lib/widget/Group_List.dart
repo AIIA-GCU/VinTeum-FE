@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:vinteum/Common/color.dart';
 import 'package:vinteum/main.dart';
+import 'package:vinteum/Page/Detail_Screen1.dart';
 
 class GroupList extends StatelessWidget {
   final String title;
@@ -15,7 +16,9 @@ class GroupList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        Navigator.push(context, MaterialPageRoute(builder: (context) => DetailScreen()));
+      },
       child: Container(
         margin: EdgeInsets.fromLTRB(0, 0, 0, 15),
         padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 10),
