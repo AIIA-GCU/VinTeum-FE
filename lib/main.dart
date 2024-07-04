@@ -3,6 +3,7 @@ import 'package:vinteum/Page/Home_Screen.dart';
 import 'package:vinteum/Page/Make_Screen.dart';
 import 'package:vinteum/Page/Detail_Screen1.dart';
 import 'package:vinteum/Page/Detail_Screen2.dart';
+import 'package:vinteum/Page/Detail_Screen3.dart';
 import 'widget/root_tab.dart';
 import 'package:vinteum/config/variable.dart';
 
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       //  debugShowCheckedModeBanner: false,
       //  home: RootTab()
-      home: DetailScreen2()
+      home: DetailScreen()
     );
   }
 }
