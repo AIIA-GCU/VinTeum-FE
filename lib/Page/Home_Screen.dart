@@ -13,8 +13,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-
-
   @override
   Widget build(BuildContext context) {
     List<Widget> data = [
@@ -33,16 +31,15 @@ class _HomeScreenState extends State<HomeScreen> {
                   Icon(Icons.notifications_none),
                   SizedBox(width: ratio.width * 15),
                   InkWell(
-                    onTap: () {
-                      showDialog(
-                        context: context,
-                        builder: (context) {
-                          return settingDialog();
-                        },
-                      );
-                    },
-                      child: Image.asset("assets/img/settings.png")
-                  )
+                      onTap: () {
+                        showDialog(
+                          context: context,
+                          builder: (context) {
+                            return settingDialog();
+                          },
+                        );
+                      },
+                      child: Image.asset("assets/img/settings.png"))
                 ],
               ),
               Padding(
@@ -55,12 +52,21 @@ class _HomeScreenState extends State<HomeScreen> {
                     SizedBox(width: ratio.width * 6),
                     Expanded(
                       child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text("사용자",
-                              style: TextStyle(
-                                fontSize: 27,
-                          )),
-                          Divider(height: 5,
+                          Row(
+                            children: [
+                              SizedBox(
+                                width: ratio.width * 6,
+                              ),
+                              Text("사용자",
+                                  style: TextStyle(
+                                    fontSize: 27,
+                                  )),
+                            ],
+                          ),
+                          Divider(
+                              height: 5,
                               thickness: 1,
                               indent: 3,
                               endIndent: 3,
@@ -68,7 +74,6 @@ class _HomeScreenState extends State<HomeScreen> {
                         ],
                       ),
                     ),
-
                     InkWell(
                         onTap: () {
                           showDialog(
@@ -93,7 +98,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => TimetableScreen(selected: false)));
+                              builder: (context) =>
+                                  TimetableScreen(selected: false)));
                     },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -101,7 +107,6 @@ class _HomeScreenState extends State<HomeScreen> {
                         Icon(Icons.folder_outlined),
                         SizedBox(width: ratio.width * 12),
                         Text("시간표 관리"),
-
                       ],
                     )),
               ),
