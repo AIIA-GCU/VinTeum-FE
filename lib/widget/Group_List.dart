@@ -15,7 +15,7 @@ class GroupList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
+    return GestureDetector(
       onTap: () {
         Navigator.push(context, MaterialPageRoute(builder: (context) => DetailScreen()));
       },

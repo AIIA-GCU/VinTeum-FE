@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:vinteum/widget/root_tab.dart';
+import 'package:vinteum/Page/Login_Register_Screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -16,7 +16,7 @@ class _SplashScreenState extends State<SplashScreen> {
     Timer(Duration(milliseconds: 1500), () {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => RootTab()),
+        MaterialPageRoute(builder: (context) => LoginSignupScreen()),
       );
     });
   }

@@ -30,7 +30,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: [
                   Icon(Icons.notifications_none),
                   SizedBox(width: ratio.width * 15),
-                  InkWell(
+                  GestureDetector(
                       onTap: () {
                         showDialog(
                           context: context,
@@ -74,7 +74,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ],
                       ),
                     ),
-                    InkWell(
+                    GestureDetector(
                         onTap: () {
                           showDialog(
                             context: context,
@@ -91,9 +91,13 @@ class _HomeScreenState extends State<HomeScreen> {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 60, vertical: 5),
                 child: ElevatedButton(
+
                     style: ElevatedButton.styleFrom(
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(15))),
+                            borderRadius: BorderRadius.circular(15)),
+                    ).copyWith(
+                      overlayColor: MaterialStateProperty.all(Colors.transparent), // 클릭 효과 제거
+                    ),
                     onPressed: () {
                       Navigator.push(
                           context,
