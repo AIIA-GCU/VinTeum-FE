@@ -7,14 +7,12 @@ class CustomButton extends StatelessWidget {
   final VoidCallback func;
   final Color textColor;
   final Color backgroundColor;
-  final Color borderColor;
   final int buttonCount;
   const CustomButton({
     required this.text,
     required this.func,
     this.textColor = Colors.white,
     this.backgroundColor = VinTeumColors.mainBlue,
-    this.borderColor = VinTeumColors.mainBlue,
     required this.buttonCount,
     super.key,});
 
@@ -26,7 +24,6 @@ class CustomButton extends StatelessWidget {
         padding: const EdgeInsets.symmetric(vertical: 11),
         width: double.infinity,
         decoration: BoxDecoration(
-          border: Border.all(color: borderColor),
           color: backgroundColor,
           borderRadius: BorderRadius.circular(8),
         ),
@@ -53,7 +50,7 @@ class CustomButton extends StatelessWidget {
                 ),
                 child: Center(
                   child: Text(
-                    text,
+                    "등록",
                     style: TextStyle(
                         fontSize: 20,
                         color: textColor,
@@ -74,7 +71,7 @@ class CustomButton extends StatelessWidget {
                 ),
                 child: Center(
                   child: Text(
-                    text,
+                    "삭제",
                     style: TextStyle(
                         fontSize: 20,
                         color: VinTeumColors.mainBlue,
