@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vinteum/Common/color.dart';
+import 'package:vinteum/Page/Alarm_Screen.dart';
 import 'package:vinteum/main.dart';
 import 'package:vinteum/widget/dialog.dart';
 import 'package:vinteum/widget/Group_List.dart';
@@ -28,7 +29,11 @@ class _HomeScreenState extends State<HomeScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Icon(Icons.notifications_none),
+                  GestureDetector(
+                      onTap: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Alarm_Screen()));
+                      },
+                      child: Icon(Icons.notifications_none)),
                   SizedBox(width: ratio.width * 15),
                   GestureDetector(
                       onTap: () {
@@ -91,12 +96,12 @@ class _HomeScreenState extends State<HomeScreen> {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 60, vertical: 5),
                 child: ElevatedButton(
-
                     style: ElevatedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(15)),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15)),
                     ).copyWith(
-                      overlayColor: MaterialStateProperty.all(Colors.transparent), // 클릭 효과 제거
+                      overlayColor: MaterialStateProperty.all(
+                          Colors.transparent), // 클릭 효과 제거
                     ),
                     onPressed: () {
                       Navigator.push(
