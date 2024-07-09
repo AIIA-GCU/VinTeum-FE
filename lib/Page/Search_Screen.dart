@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vinteum/Common/custom_button.dart';
 import 'package:vinteum/main.dart';
 import 'package:vinteum/Common/color.dart';
 
@@ -7,67 +8,51 @@ class SearchScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      height: double.infinity,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          SizedBox(
-            height: ratio.height * 86,
-          ),
-          Text(
-            "그룹 참여",
-            style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
-          ),
-          SizedBox(
-            height: ratio.height * 96,
-          ),
-          Row(
+    return Scaffold(
+      backgroundColor: VinTeumColors.background,
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 15),
+          child: Column(
             children: [
-              SizedBox(
-                width: ratio.width * 12,
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 30),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(height: ratio.height * 80),
+                    Text(
+                      "참여 코드를 입력하세요.",
+                      style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(
+                      height: ratio.height * 30,
+                    ),
+                    Row(
+                      children: [
+                        Text(
+                          "참여 코드",
+                          style: TextStyle(
+                              fontSize: 20, color: VinTeumColors.darkgrey),
+                        ),
+                      ],
+                    ),
+                    TextField(
+                      textAlign: TextAlign.start,
+                      decoration: InputDecoration(
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: VinTeumColors.mainBlue),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
-              Text(
-                "참여코드를 입력하세요.",
-                style: TextStyle(fontSize: 24),
-              ),
+              Spacer(),
+              CustomButton(text: "참여", func: () {}, buttonCount: 1)
             ],
           ),
-          SizedBox(
-            height: ratio.height * 21,
-          ),
-          Container(
-            width: ratio.width * 317,
-            height: ratio.height * 47,
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: VinTeumColors.borderColor,
-                width: 1
-              ),
-              borderRadius: BorderRadius.circular(8)
-            ),
-            child: TextField(
-              textAlign: TextAlign.center,
-              decoration: InputDecoration(
-                border: InputBorder.none,
-                hintText: "참여코드를 입력하세요.",
-                hintStyle: TextStyle(color: Colors.black, fontSize: 14),
-              ),
-            )
-          ),
-          SizedBox(
-            height: ratio.height * 101,
-          ),
-          ElevatedButton(
-            style: ElevatedButton.styleFrom(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20)),
-                backgroundColor: VinTeumColors.primaryColor),
-            onPressed: () {},
-            child: Text("참여", style: TextStyle(color: Colors.white)),
-          ),
-        ],
+        ),
       ),
     );
   }
