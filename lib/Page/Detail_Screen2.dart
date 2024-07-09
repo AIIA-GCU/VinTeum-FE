@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:vinteum/main.dart';
 import 'package:vinteum/Common/color.dart';
 import 'package:vinteum/Page/Detail_Screen3.dart';
 import 'package:vinteum/config/variable.dart';
@@ -29,28 +30,29 @@ class DetailScreen2 extends StatelessWidget {
         body: Column(
           children: [
             Container(
-              height: 50,
+              height: ratio.height * 50,
+              // height: 50,
             ),
             Container(
-              height: 55,
-              width: 350,
+              height: ratio.height * 55,
+              width: ratio.width * 350,
               decoration: BoxDecoration(
                 border: Border.all(
-                  width: 2,
+                  width: ratio.width * 2,
                   color: Colors.black
                 ),
               ),
               child: Row(
                 children: [
                   Icon(Icons.person),
-                  SizedBox(width: 30.0),
+                  SizedBox(width: ratio.width * 30.0),
                   Text('방장',
                   style: TextStyle(fontSize: 18.0),),
                 ],
               ),
             ),
             Container(
-              height: 50,
+              height: ratio.height * 50,
             ),
             GestureDetector(
               onTap: (){
@@ -60,11 +62,11 @@ class DetailScreen2 extends StatelessWidget {
                 );
               },
               child: Container(
-                height: 55,
-                width: 350,
+                height: ratio.height * 55,
+                width: ratio.width * 350,
                 decoration: BoxDecoration(
                   border: Border.all(
-                      width: 2,
+                      width: ratio.width * 2,
                       color: Colors.black
                   ),
                 ),
@@ -75,10 +77,10 @@ class DetailScreen2 extends StatelessWidget {
                     Icon(Icons.person),
 
 
-                    SizedBox(width: 30.0),
+                    SizedBox(width: ratio.width * 30.0),
                     Text('ooo',
                       style: TextStyle(fontSize: 18.0),),
-                    SizedBox(width: 210.0),
+                    SizedBox(width: ratio.width * 210.0),
                     // 'X'아이콘 눌러서 그룹원 삭제기능
                     IconButton(onPressed: (){
                       showDialog(context: context,
@@ -112,7 +114,7 @@ class DetailScreen2 extends StatelessWidget {
               ),
             ),
             Container(
-              height: 10,
+              height: ratio.height * 10,
             ),
             GestureDetector(
               onTap: (){
@@ -122,11 +124,11 @@ class DetailScreen2 extends StatelessWidget {
                 );
               },
               child: Container(
-                height: 55,
-                width: 350,
+                height: ratio.height * 55,
+                width: ratio.width * 350,
                 decoration: BoxDecoration(
                   border: Border.all(
-                      width: 2,
+                      width: ratio.width * 2,
                       color: Colors.black
                   ),
                 ),
@@ -136,10 +138,10 @@ class DetailScreen2 extends StatelessWidget {
                     Icon(Icons.person),
 
 
-                    SizedBox(width: 30.0),
+                    SizedBox(width: ratio.width * 30.0),
                     Text('xxx',
                       style: TextStyle(fontSize: 18.0),),
-                    SizedBox(width: 210.0),
+                    SizedBox(width: ratio.width * 210.0),
                     // 'X'아이콘 눌러서 그룹원 삭제기능
                     IconButton(onPressed: (){
                       showDialog(context: context,

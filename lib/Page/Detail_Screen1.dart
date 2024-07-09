@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vinteum/main.dart';
 import 'package:vinteum/Common/color.dart';
 import 'package:vinteum/config/variable.dart';
 import 'package:vinteum/Page/Detail_Screen2.dart';
