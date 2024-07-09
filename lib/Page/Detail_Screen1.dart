@@ -12,7 +12,7 @@ class DetailScreen extends StatelessWidget {
           leading:IconButton(onPressed: (){
             Navigator.pop(context);
           }, icon: Icon(Icons.chevron_left_sharp),),
-          title: Text('개쩌는 그룹명'), //타이틀 -> 폰트 바꾸기
+          title: Text('그룹명'), //타이틀 -> 폰트 바꾸기
           titleTextStyle: TextStyle(
             fontSize: 30,
               //fontWeight: FontWeight.bold,
@@ -81,7 +81,7 @@ class DetailScreen extends StatelessWidget {
               children: [
                 Container(
                   padding: EdgeInsets.only(top:20.0),
-                  child: Text('공통으로 비는 시간',
+                  child: Text('공통 시간',
                     style: TextStyle(
                       fontSize: 23,
                       color: Colors.black38
