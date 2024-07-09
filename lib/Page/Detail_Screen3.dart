@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:vinteum/Common/color.dart';
+import 'package:vinteum/config/variable.dart';
+import 'package:vinteum/main.dart';
+import 'package:vinteum/Page/Detail_Screen2.dart';
 
 
 class DetailScreen3 extends StatelessWidget {
@@ -25,8 +29,8 @@ class DetailScreen3 extends StatelessWidget {
         body: Column(
           children: [
             Container(
-              height: 600,
-              width: 350,
+              height: ratio.height * 700,
+              width: ratio.width * 350,
               padding: EdgeInsets.all(20),
               margin: EdgeInsets.all(30),
               decoration: BoxDecoration(
@@ -36,11 +40,22 @@ class DetailScreen3 extends StatelessWidget {
               child: Center(
                 child: Column(
                   children: [
-                    Text( "ooo님의 시간표",
-                      style: TextStyle(fontSize: 20),
+                    SizedBox(
+                      height: ratio.height * 15,
                     ),
-                    Image.asset('assets/img/ex_img.png'),
-                    SizedBox(height: 9),
+                    Text( "ooo님의 시간표",
+                      style: TextStyle(fontSize: 24),
+                    ),
+                    SizedBox(
+                      height: ratio.height * 21,
+                    ),
+                    Image.asset(
+                      'assets/images/ex_img.png',
+                      width: ratio.width * 319,
+                      height: ratio.height * 518,
+                      fit: BoxFit.cover,
+                    ),
+                    SizedBox(height: ratio.height * 21),
                     ElevatedButton(onPressed: (){
                       Navigator.pop(context);
                     }, child: Text('확인')),
