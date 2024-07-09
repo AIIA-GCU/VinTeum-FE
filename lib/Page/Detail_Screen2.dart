@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:vinteum/main.dart';
-import 'package:vinteum/Common/color.dart';
 import 'package:vinteum/Page/Detail_Screen3.dart';
 
 
@@ -20,7 +19,6 @@ class DetailScreen2 extends StatelessWidget {
           title: Text('개쩌는 그룹명'), //타이틀 -> 폰트 바꾸기
           titleTextStyle: TextStyle(
               fontSize: 30,
-              //fontWeight: FontWeight.bold,
               color: Colors.black
           ),
           centerTitle: true,
@@ -30,7 +28,6 @@ class DetailScreen2 extends StatelessWidget {
           children: [
             Container(
               height: ratio.height * 50,
-              // height: 50,
             ),
             Container(
               height: ratio.height * 55,

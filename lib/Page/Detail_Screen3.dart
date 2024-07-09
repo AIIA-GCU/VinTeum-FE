@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:vinteum/Common/color.dart';
-import 'package:vinteum/config/variable.dart';
 import 'package:vinteum/main.dart';
 import 'package:vinteum/Page/Detail_Screen2.dart';
 
@@ -50,15 +49,24 @@ class DetailScreen3 extends StatelessWidget {
                       height: ratio.height * 21,
                     ),
                     Image.asset(
-                      'assets/images/ex_img.png',
+                      'assets/img/ex_img.png',
                       width: ratio.width * 319,
                       height: ratio.height * 518,
                       fit: BoxFit.cover,
                     ),
                     SizedBox(height: ratio.height * 21),
-                    ElevatedButton(onPressed: (){
-                      Navigator.pop(context);
-                    }, child: Text('확인')),
+
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20)),
+                          backgroundColor: VinTeumColors.primaryColor
+                      ),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: Text("확인", style: TextStyle(color: Colors.white)),
+                    ),
                   ],
 
                 ),
