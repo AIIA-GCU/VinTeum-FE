@@ -110,7 +110,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ],
                     )),
               ),
-              SizedBox(height: 53),
+              SizedBox(height: ratio.height * 53),
               Align(
                 alignment: Alignment.bottomLeft,
                 child: Text("내 그룹 보기",
