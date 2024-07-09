@@ -43,8 +43,13 @@ class DetailScreen3 extends StatelessWidget {
                     Text( "ooo님의 시간표",
                       style: TextStyle(fontSize: 20),
                     ),
-                    Image.asset('assets/images/ex_img.png'),
-                    SizedBox(height: 9),
+                    Image.asset(
+                      'assets/images/ex_img.png',
+                      width: 300,
+                      height: 390,
+                      fit: BoxFit.cover,
+                    ),
+                    SizedBox(height: ratio.height * 15),
                     ElevatedButton(onPressed: (){
                       Navigator.pop(context);
                     }, child: Text('확인')),

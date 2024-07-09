@@ -78,9 +78,15 @@ class DetailScreen2 extends StatelessWidget {
 
 
                     SizedBox(width: ratio.width * 30.0),
-                    Text('ooo',
-                      style: TextStyle(fontSize: 18.0),),
-                    SizedBox(width: ratio.width * 210.0),
+                    Container(
+                      child: Flexible(
+                        child: Text('ooo',
+                          style: TextStyle(fontSize: 18.0),),
+                      ),
+                      //color: Colors.red,
+                      width: ratio.width * 150,
+                    ),
+                    SizedBox(width: ratio.width * 90.0),
                     // 'X'아이콘 눌러서 그룹원 삭제기능
                     IconButton(onPressed: (){
                       showDialog(context: context,
@@ -139,9 +145,14 @@ class DetailScreen2 extends StatelessWidget {
 
 
                     SizedBox(width: ratio.width * 30.0),
-                    Text('xxx',
-                      style: TextStyle(fontSize: 18.0),),
-                    SizedBox(width: ratio.width * 210.0),
+                    Container(
+                      child: Flexible(
+                        child: Text('xxx',
+                          style: TextStyle(fontSize: 18.0),),
+                      ),
+                      width: ratio.width * 150,
+                    ),
+                    SizedBox(width: ratio.width * 90.0),
                     // 'X'아이콘 눌러서 그룹원 삭제기능
                     IconButton(onPressed: (){
                       showDialog(context: context,
