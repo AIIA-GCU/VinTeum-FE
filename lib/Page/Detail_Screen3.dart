@@ -29,7 +29,7 @@ class DetailScreen3 extends StatelessWidget {
         body: Column(
           children: [
             Container(
-              height: ratio.height * 600,
+              height: ratio.height * 700,
               width: ratio.width * 350,
               padding: EdgeInsets.all(20),
               margin: EdgeInsets.all(30),
@@ -40,16 +40,22 @@ class DetailScreen3 extends StatelessWidget {
               child: Center(
                 child: Column(
                   children: [
+                    SizedBox(
+                      height: ratio.height * 15,
+                    ),
                     Text( "ooo님의 시간표",
-                      style: TextStyle(fontSize: 20),
+                      style: TextStyle(fontSize: 24),
+                    ),
+                    SizedBox(
+                      height: ratio.height * 21,
                     ),
                     Image.asset(
                       'assets/images/ex_img.png',
-                      width: 300,
-                      height: 390,
+                      width: ratio.width * 319,
+                      height: ratio.height * 518,
                       fit: BoxFit.cover,
                     ),
-                    SizedBox(height: ratio.height * 15),
+                    SizedBox(height: ratio.height * 21),
                     ElevatedButton(onPressed: (){
                       Navigator.pop(context);
                     }, child: Text('확인')),
