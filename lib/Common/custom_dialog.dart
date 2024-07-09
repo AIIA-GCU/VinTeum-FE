@@ -40,64 +40,64 @@ Future<void> CustomDialog({
               ),
               buttonCount == 2
                   ? Row(
-                children: [
-                  Expanded(
-                    child: TextButton(
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: VinTeumColors.subBlue2,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8),
-                          )),
-                      onPressed: func,
-                      child: Text(
-                        '취소',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: VinTeumColors.mainBlue,
+                      children: [
+                        Expanded(
+                          child: TextButton(
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor: VinTeumColors.subBlue2,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(8),
+                                )),
+                            onPressed: func,
+                            child: Text(
+                              '취소',
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                color: VinTeumColors.mainBlue,
+                              ),
+                            ),
+                          ),
                         ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(width: ratio.width * 12),
-                  Expanded(
-                    child: TextButton(
+                        SizedBox(width: ratio.width * 12),
+                        Expanded(
+                          child: TextButton(
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor: VinTeumColors.mainBlue,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(8),
+                                )),
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            child: Text(
+                              '확인',
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    )
+                  : TextButton(
                       style: ElevatedButton.styleFrom(
                           backgroundColor: VinTeumColors.mainBlue,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8),
                           )),
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
+                      onPressed: func,
                       child: Text(
-                        '확인',
+                        buttonText!,
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
                           color: Colors.white,
                         ),
                       ),
-                    ),
-                  ),
-                ],
-              )
-                  : TextButton(
-                style: ElevatedButton.styleFrom(
-                    backgroundColor: VinTeumColors.mainBlue,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    )),
-                onPressed: func,
-                child: Text(
-                  buttonText!,
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
-                ),
-              )
+                    )
             ],
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -106,3 +106,4 @@ Future<void> CustomDialog({
         });
       });
 }
+
