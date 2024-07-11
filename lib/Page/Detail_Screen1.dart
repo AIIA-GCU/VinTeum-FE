@@ -1,5 +1,10 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:vinteum/Common/color.dart';
+import 'package:vinteum/Common/custom_button.dart';
+import 'package:vinteum/Common/custom_dialog.dart';
 import 'package:vinteum/Page/Detail_Screen2.dart';
+import 'package:vinteum/main.dart';
 
 class DetailScreen extends StatelessWidget {
   const DetailScreen({super.key});
@@ -8,98 +13,116 @@ class DetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Placeholder(
       child: Scaffold(
+        backgroundColor: VinTeumColors.background,
         appBar: AppBar(
-          leading:IconButton(onPressed: (){
-            Navigator.pop(context);
-          }, icon: Icon(Icons.chevron_left_sharp),),
-          title: Text('그룹명'), //타이틀 -> 폰트 바꾸기
-          titleTextStyle: TextStyle(
-            fontSize: 30,
-              //fontWeight: FontWeight.bold,
-            color: Colors.black
-          ),
-          centerTitle: true,
-          actions: [
-            IconButton(onPressed: (){
-              //눌렸을시 '정말로 삭제하시겠습니까?' 경고문구 팝업후 삭제
-              showDialog(context: context,
-                  builder: (BuildContext context){
-                    return AlertDialog(
-                      title: Text('정말로 삭제하시겠습니까?'),
-                      actions: <Widget>[
-                        TextButton(
-                          child: Text('예'), // 누르면 홈화면으로 돌아간후 그룹 정보를 삭제시키기
-                          onPressed: (){
-                            Navigator.of(context).pop(); // 팝업 창 닫기
-                            Navigator.of(context).pop(); // 현재 페이지 닫기
-                          },
-                        ),
-                        TextButton(
-                            child: Text('아니요'),  // 팝업창만 닫히고 그대로 유지
-                            onPressed: (){
-                              Navigator.of(context).pop(); // 팝업 창 닫기
-                            },
-                        ),
-                      ],
-                    );
-                   },
-                );
-              },
-                icon: Icon(Icons.delete),
+          leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: Icon(
+              Icons.arrow_back_ios,
+              color: VinTeumColors.grey,
             ),
-          ],
           ),
-        body: Column(
-          children: [
-            Container(
-              //padding: EdgeInsets.all(2.0),
-              child: Row(
-               mainAxisAlignment: MainAxisAlignment.end,
+          title: Text('그룹명'),
+          //타이틀 -> 폰트 바꾸기
+          titleTextStyle: TextStyle(
+              fontSize: 30, fontWeight: FontWeight.bold, color: Colors.black),
+          centerTitle: true,
+          backgroundColor: VinTeumColors.background,
+        ),
+        body: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Column(
+            children: [
+              SizedBox(height: ratio.height * 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Container(
-                    padding: EdgeInsets.only(right: 10.0),
-                    child: ElevatedButton.icon(
-                        onPressed: (){
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context)=> DetailScreen2()),
-                          );
-                        },
-                        style: ElevatedButton.styleFrom(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(2.0),
-                          ) ,
-                        ),
-                        icon: Icon(Icons.person),
-                        label: Text('4명'), //back에서 인원수 데이터 받아오기
+                  Text("참여 코드 복사",
+                    style: TextStyle(
+                      color: VinTeumColors.darkgrey,
+                      fontSize: 16,
                     ),
                   ),
+                  GestureDetector(
+                    child: Image.asset('assets/img/download.png'),
+                    onTap: (){},
+                  ),
+
                 ],
               ),
-            ),
-            Column(
-              children: [
-                Container(
-                  padding: EdgeInsets.only(top:20.0),
-                  child: Text('공통 시간',
-                    style: TextStyle(
-                      fontSize: 23,
-                      color: Colors.black38
+              Row(
+                children: [
+                  SizedBox(
+                    width: ratio.width * 15,
+                  ),
+                  Container(
+                    child: Text(
+                      '공통 시간',
+                      style: TextStyle(
+                          fontSize: 23,
+                          fontWeight: FontWeight.bold,
+                          color: VinTeumColors.mainBlue),
                     ),
                   ),
-                ),
-                Image.asset('assets/img/ex_img.png'),
-              ],
-            ),
+                  SizedBox(width: ratio.width * 125),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => DetailScreen2()),
+                      );
+                    },
+                    child: Container(
+                      width: ratio.width * 144,
+                      height: ratio.height * 35,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(12),
+                        ),
+                        border: Border.all(color: VinTeumColors.darkgrey),
+                      ),
+                      child: Center(
+                        child: Text(
+                          '그룹 인원: 2명',
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: VinTeumColors.darkgrey,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
 
-          ],
-
+                  // Image.asset(
+                  //   'assets/img/ex_img.png',
+                  //   width: ratio.width * 319,
+                  //   height: ratio.height * 518,
+                  //   fit: BoxFit.cover,
+                  // ),
+                ],
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Container(
+                height: ratio.height * 527,
+                // width: ratio.width * 357,
+                decoration: BoxDecoration(color: Colors.white),
+              ),
+              SizedBox(
+                height: ratio.height * 30,
+              ),
+              CustomButton(text: "그룹 삭제",
+                  func: () {
+                CustomDialog(context: context, title: "그룹 삭제", dialogContent: "그룹을 삭제하시겠습니까?", buttonText: "", buttonCount: 2, func: () {});
+                  },
+                  buttonCount: 1)
+            ],
+          ),
         ),
-
-        ),
-      
-
-
+      ),
     );
   }
 }
