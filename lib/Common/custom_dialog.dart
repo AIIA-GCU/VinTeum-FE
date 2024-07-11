@@ -49,7 +49,9 @@ Future<void> CustomDialog({
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(8),
                                 )),
-                            onPressed: func,
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
                             child: Text(
                               '취소',
                               style: TextStyle(
@@ -68,9 +70,7 @@ Future<void> CustomDialog({
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(8),
                                 )),
-                            onPressed: () {
-                              Navigator.pop(context);
-                            },
+                            onPressed: func,
                             child: Text(
                               '확인',
                               style: TextStyle(

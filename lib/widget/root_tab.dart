@@ -43,8 +43,13 @@ class _RootTabState extends State<RootTab> with SingleTickerProviderStateMixin {
           controller: controller,
           children: [
             HomeScreen(),
-            MakeScreen(selected: false),
-            SearchScreen()
+            MakeScreen(
+              selected: false,
+              callback: () => controller.animateTo(0), // Navigate to the first tab (HomeScreen)
+            ),
+            SearchScreen(
+              callback: () => controller.animateTo(0),
+            )
           ]
       ),
       bottomNavigationBar: BottomNavigationBar(
