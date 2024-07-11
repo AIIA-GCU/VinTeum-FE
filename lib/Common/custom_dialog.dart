@@ -8,6 +8,7 @@ Future<void> CustomDialog({
   bool barrierDismissible = true,
   required BuildContext context,
   required String title,
+  required String dialogContent,
   required String? buttonText,
   required int buttonCount,
   required VoidCallback func,
@@ -21,25 +22,25 @@ Future<void> CustomDialog({
           return AlertDialog(
             backgroundColor: Colors.white,
             surfaceTintColor: Colors.transparent,
-            actions: <Widget>[
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 20),
-                child: Container(
-                  width: double.infinity,
-                  child: Center(
-                    child: Text(
-                      title,
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
+            title: Center(
+              child: Text(
+                title,
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
                 ),
+                textAlign: TextAlign.center,
               ),
+            ),
+            content: Container(
+              height: ratio.height * 30,
+              child: Center(
+                  child: Text(dialogContent, style: TextStyle(fontSize: 17))),
+            ),
+            actions: <Widget>[
               buttonCount == 2
                   ? Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Expanded(
                           child: TextButton(
@@ -82,19 +83,21 @@ Future<void> CustomDialog({
                         ),
                       ],
                     )
-                  : TextButton(
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: VinTeumColors.mainBlue,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8),
-                          )),
-                      onPressed: func,
-                      child: Text(
-                        buttonText!,
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
+                  : Center(
+                      child: TextButton(
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: VinTeumColors.mainBlue,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8),
+                            )),
+                        onPressed: func,
+                        child: Text(
+                          buttonText!,
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
                         ),
                       ),
                     )
@@ -106,4 +109,3 @@ Future<void> CustomDialog({
         });
       });
 }
-
