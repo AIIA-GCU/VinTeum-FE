@@ -5,7 +5,8 @@ import 'package:vinteum/main.dart';
 
 
 class DetailScreen3 extends StatelessWidget {
-  const DetailScreen3({super.key});
+  const DetailScreen3({super.key, required this.userName});
+  final String userName;
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +53,7 @@ class DetailScreen3 extends StatelessWidget {
                     SizedBox(
                       height: ratio.height * 10,
                     ),
-                    Text( "그룹원1님의 시간표",
+                    Text( "$userName님의 시간표",
                       style: TextStyle(fontSize: 25),
                     ),
                     SizedBox(
