@@ -15,8 +15,11 @@ class MyApp extends StatelessWidget {
     ratio = Size(MediaQuery.sizeOf(context).width / 412, MediaQuery.sizeOf(context).height / 892);
     return MaterialApp(
         theme: ThemeData(
-            fontFamily: "Pretendard"
+            fontFamily: "Pretendard",
+          splashColor: Colors.transparent,
+          highlightColor: Colors.transparent,
         ),
+
         debugShowCheckedModeBanner: false,
         home: SplashScreen()
     );

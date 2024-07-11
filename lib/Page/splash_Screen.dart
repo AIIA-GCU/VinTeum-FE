@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:vinteum/Common/color.dart';
 import 'package:vinteum/Page/Login_Register_Screen.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -24,6 +25,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: VinTeumColors.background,
       body: Container(
         width: double.infinity,
         height: double.infinity,
