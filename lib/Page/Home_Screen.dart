@@ -12,17 +12,21 @@ import 'package:vinteum/Page/Timetable_Screen.dart';
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
+
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+
+
   @override
   Widget build(BuildContext context) {
     List<Widget> data = [
-      GroupList(title: "그룹1", number: "5"),
-      GroupList(title: "그룹1", number: "5"),
-      GroupList(title: "그룹1", number: "5"),
+      // GroupList(title: "그룹1", number: "5"),
+      // GroupList(title: "그룹1", number: "5"),
+      // GroupList(title: "그룹1", number: "5"),
+      // GroupList(title: "그룹1", number: "5"),
     ];
     return Scaffold(
       backgroundColor: VinTeumColors.background,
@@ -113,9 +117,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     ? Column(
                         children: [
                           SizedBox(height: ratio.height * 130),
-                          Text("그룹을 추가 해주세요!",
+                          Text("아직 그룹이 없어요!",
                               style: TextStyle(
-                                  fontSize: 20, color: VinTeumColors.grey1))
+                                  fontSize: 20, color: VinTeumColors.grey1), textAlign: TextAlign.center)
                         ],
                       )
                     : Expanded(
