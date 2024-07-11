@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:vinteum/Common/custom_button.dart';
 import 'package:vinteum/main.dart';
 import 'package:vinteum/Common/color.dart';
 import 'package:vinteum/widget/root_tab.dart';
@@ -316,17 +317,15 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                 SizedBox(
                                   height: ratio.height * 8,
                                 ),
-                                ElevatedButton(
-                                  style: ElevatedButton.styleFrom(
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(20)),
-                                      backgroundColor: VinTeumColors.primaryColor
-                                  ),
-                                  onPressed: () {
-                                    Navigator.push(context, MaterialPageRoute(builder: (context) => RootTab()));
-                                  },
-                                  child: Text("회원가입", style: TextStyle(color: Colors.white)),
-                                ),
+                                CustomButton(
+                                    text: "로그인",
+                                    func: (){Navigator.push(context, MaterialPageRoute(builder: (context) => RootTab()));},
+                                    buttonCount: 1),
+                                CustomButton(
+                                    text: "회원가입",
+                                    func: (){Navigator.push(context, MaterialPageRoute(builder: (context) => RootTab()));},
+                                    buttonCount: 1),
+                               
                               ],
                             ),
                           ),
