@@ -20,39 +20,37 @@ class GroupList extends StatelessWidget {
         Navigator.push(context, MaterialPageRoute(builder: (context) => DetailScreen()));
       },
       child: Container(
-        margin: EdgeInsets.fromLTRB(0, 0, 0, 15),
-        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 10),
+        margin: EdgeInsets.fromLTRB(0, 17, 0, 0),
+        padding: const EdgeInsets.symmetric(vertical: 17, horizontal: 14),
         decoration: BoxDecoration(
-          color: VinTeumColors.mainColor,
+          color: Colors.white,
           borderRadius: BorderRadius.circular(10),
-            border: Border.all(color: VinTeumColors.borderColor, width: 1
-            )
         ),
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Column(
               children: [
                 Text(
                     title,
                     style: TextStyle(
-                        fontSize: 32, color: Colors.black)
+                        fontSize: 24, color: Colors.black, fontWeight: FontWeight.bold)
                 ),
+                SizedBox(height: ratio.height * 7),
                 Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Image.asset("assets/img/user.png"),
+                    Icon(Icons.person, size: 30),
                     Text(
-                        number,
+                        "$number명",
                         style: TextStyle(
-                            fontSize: 24, color: Colors.black)
+                            fontSize: 20, color: Colors.black)
                     ),
-                    SizedBox(width: ratio.width * 40)
                   ],
                 )
               ],
             ),
             Spacer(),
-            Image.asset("assets/img/navigate.png")
+            Image.asset("assets/img/navigation.png")
           ],
         ),
 

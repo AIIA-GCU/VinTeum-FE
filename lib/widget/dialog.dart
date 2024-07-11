@@ -123,15 +123,22 @@ class _nameDialogState extends State<nameDialog> {
           ),
           actions: <Widget>[
             Center(
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20)),
-                    backgroundColor: VinTeumColors.primaryColor),
-                onPressed: () => Navigator.pop(context, _nameController.text),
-                child: Text("저장", style: TextStyle(color: Colors.white)),
-              ),
-            ),
+                child: TextButton(
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: VinTeumColors.mainBlue,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      )),
+                  onPressed: () {},
+                  child: Text(
+                    "저장",
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                ))
           ],
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(10)),

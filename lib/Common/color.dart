@@ -12,6 +12,7 @@ class VinTeumColors{
   // 색상 변경
   static const mainBlue = Color(0xFF5193FF);
   static const subBlue = Color(0xFFA7C9FF);
+  static const subBlue2 = Color(0xFFE3EDFD);
   static const background = Color(0xFFF4F5F8);
   static const grey = Color(0xFFABABAB);
   static const darkgrey = Color(0xFF7C7C7C);

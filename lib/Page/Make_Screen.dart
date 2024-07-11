@@ -1,73 +1,98 @@
 import 'package:flutter/material.dart';
 import 'package:vinteum/Common/color.dart';
+import 'package:vinteum/Common/custom_button.dart';
 import 'package:vinteum/main.dart';
 
-class MakeScreen extends StatelessWidget {
-  const MakeScreen({super.key});
+class MakeScreen extends StatefulWidget {
+  const MakeScreen({super.key, required this.selected});
+
+  final bool selected;
+
+  @override
+  State<MakeScreen> createState() => _MakeScreenState();
+}
+
+class _MakeScreenState extends State<MakeScreen> {
+  bool selected = false;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      height: double.infinity,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          SizedBox(
-            height: ratio.height * 86,
-          ),
-          Text(
-            "그룹 생성",
-            style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
-          ),
-          SizedBox(
-            height: ratio.height * 96,
-          ),
-          Row(
+    return Scaffold(
+      backgroundColor: VinTeumColors.background,
+        body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 15),
+          child: Column(
             children: [
-              SizedBox(
-                width: ratio.width * 12,
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 30),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(height: ratio.height * 80),
+                    Text(
+                      "그룹명을 입력하세요.",
+                      style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(
+                      height: ratio.height * 30,
+                    ),
+                    Row(
+                      children: [
+                        Text(
+                          "그룹명",
+                          style: TextStyle(
+                              fontSize: 20, color: VinTeumColors.darkgrey),
+                        ),
+                      ],
+                    ),
+                    selected == false
+                        ? TextField(
+                            textAlign: TextAlign.start,
+                            decoration: InputDecoration(
+                              focusedBorder: UnderlineInputBorder(
+                                borderSide:
+                                    BorderSide(color: VinTeumColors.mainBlue),
+                              ),
+                            ),
+                          )
+                        : Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              TextField(
+                                textAlign: TextAlign.start,
+                                decoration: InputDecoration(
+                                  focusedBorder: UnderlineInputBorder(
+                                    borderSide:
+                                        BorderSide(color: VinTeumColors.mainBlue),
+                                  ),
+                                ),
+                              ),
+                              SizedBox(height: ratio.height * 30),
+                              Text(
+                                "참여 코드",
+                                style: TextStyle(
+                                    fontSize: 20, color: VinTeumColors.darkgrey),
+                              ),
+                              SizedBox(height: ratio.height * 30),
+                             Divider(color: VinTeumColors.darkgrey)
+                            ],
+                          )
+                  ],
+                ),
               ),
-              Text(
-                "그룹명을 입력하세요.",
-                style: TextStyle(fontSize: 24),
-              ),
+              Spacer(),
+              CustomButton(
+                  text: "생성",
+                  func: () {
+                    setState(() {
+                      selected = true;
+                    });
+                  },
+                  buttonCount: 1)
             ],
           ),
-          SizedBox(
-            height: ratio.height * 21,
-          ),
-          Container(
-              width: ratio.width * 317,
-              height: ratio.height * 47,
-              decoration: BoxDecoration(
-                  border: Border.all(
-                      color: VinTeumColors.borderColor,
-                      width: 1
-                  ),
-                  borderRadius: BorderRadius.circular(8)
-              ),
-              child: TextField(
-                textAlign: TextAlign.center,
-                decoration: InputDecoration(
-                  border: InputBorder.none,
-                  hintText: "그룹명을 입력하세요.",
-                  hintStyle: TextStyle(color: Colors.black, fontSize: 14),
-                ),
-              )
-          ),
-          SizedBox(
-            height: ratio.height * 101,
-          ),
-          ElevatedButton(
-            style: ElevatedButton.styleFrom(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20)),
-                backgroundColor: VinTeumColors.primaryColor),
-            onPressed: () {},
-            child: Text("생성", style: TextStyle(color: Colors.white)),
-          ),
-        ],
+        ),
       ),
     );
   }
