@@ -129,7 +129,9 @@ class _nameDialogState extends State<nameDialog> {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8),
                       )),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
                   child: Text(
                     "저장",
                     style: TextStyle(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vinteum/Common/color.dart';
+import 'package:vinteum/Common/custom_dialog.dart';
 import 'package:vinteum/Common/custom_switch.dart';
 import 'package:vinteum/widget/dialog.dart';
 import 'package:vinteum/main.dart';
@@ -119,7 +120,16 @@ class _SettingScreenState extends State<SettingScreen> {
                             borderRadius: BorderRadius.circular(10)),
                         padding:
                             EdgeInsets.symmetric(horizontal: 17, vertical: 20)),
-                    onPressed: () {},
+                    onPressed: () {
+                      CustomDialog(
+                          context: context,
+                          title: "로그아웃",
+                          dialogContent: "로그아웃 하시겠습니까?",
+                          buttonText: "",
+                          buttonCount: 2, func: () {
+                            Navigator.pop(context);
+                      });
+                    },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
