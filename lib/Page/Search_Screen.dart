@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:vinteum/Common/custom_button.dart';
+import 'package:vinteum/Common/custom_dialog.dart';
 import 'package:vinteum/main.dart';
 import 'package:vinteum/Common/color.dart';
 
-class SearchScreen extends StatelessWidget {
-  const SearchScreen({super.key});
+class SearchScreen extends StatefulWidget {
+  const SearchScreen({super.key, required this.callback});
 
+  final VoidCallback callback;
+  @override
+  State<SearchScreen> createState() => _SearchScreenState();
+}
+
+class _SearchScreenState extends State<SearchScreen> {
+  final TextEditingController codeNameController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,6 +46,7 @@ class SearchScreen extends StatelessWidget {
                       ],
                     ),
                     TextField(
+                      controller: codeNameController,
                       textAlign: TextAlign.start,
                       decoration: InputDecoration(
                         focusedBorder: UnderlineInputBorder(
@@ -49,7 +58,35 @@ class SearchScreen extends StatelessWidget {
                 ),
               ),
               Spacer(),
-              CustomButton(text: "참여", func: () {}, buttonCount: 1)
+              CustomButton(
+                  text: "참여",
+                  func: () {
+                    setState(() {
+                      if (codeNameController.text.isNotEmpty) {
+                        CustomDialog(
+                            context: context,
+                            title: "그룹 생성",
+                            buttonText: "확인",
+                            dialogContent: "그룹 침여가 완료되었습니다.",
+                            buttonCount: 1,
+                            func: () {
+                              Navigator.pop(context);
+                              widget.callback();
+                            });
+                      } else {
+                        CustomDialog(
+                            context: context,
+                            title: "그룹 참여",
+                            dialogContent: "참여 코드를 입력해주세요.",
+                            buttonText: "확인",
+                            buttonCount: 1,
+                            func: () {
+                              Navigator.pop(context);
+                            });
+                      }
+                    });
+                  },
+                  buttonCount: 1),
             ],
           ),
         ),
