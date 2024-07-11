@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vinteum/Common/color.dart';
+import 'package:vinteum/Common/custom_button.dart';
 import 'package:vinteum/main.dart';
 
 
@@ -15,8 +16,16 @@ class DetailScreen3 extends StatelessWidget {
           leading:IconButton(onPressed: (){
             Navigator.pop(context);
           },
-            icon: Icon(Icons.chevron_left_sharp),),
-          title: Text('개쩌는 그룹명'), //타이틀 -> 폰트 바꾸기
+            icon: Icon(
+              Icons.arrow_back_ios,
+              color: VinTeumColors.grey,
+            ),),
+          title: Text('그룹명',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 30,
+            ),
+          ), //타이틀 -> 폰트 바꾸기
           titleTextStyle: TextStyle(
               fontSize: 30,
               //fontWeight: FontWeight.bold,
@@ -33,40 +42,26 @@ class DetailScreen3 extends StatelessWidget {
               padding: EdgeInsets.all(20),
               margin: EdgeInsets.all(30),
               decoration: BoxDecoration(
-                  border: Border.all(width: 2), 
+                color: Colors.white,
+
                   borderRadius: BorderRadius.circular(17.0)
                 ),
               child: Center(
                 child: Column(
                   children: [
                     SizedBox(
-                      height: ratio.height * 15,
+                      height: ratio.height * 10,
                     ),
-                    Text( "그룹원님의 시간표",
-                      style: TextStyle(fontSize: 24),
+                    Text( "그룹원1님의 시간표",
+                      style: TextStyle(fontSize: 25),
                     ),
                     SizedBox(
                       height: ratio.height * 21,
                     ),
-                    Image.asset(
-                      'assets/img/ex_img.png',
-                      width: ratio.width * 319,
-                      height: ratio.height * 518,
-                      fit: BoxFit.cover,
-                    ),
-                    SizedBox(height: ratio.height * 21),
 
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20)),
-                          backgroundColor: VinTeumColors.primaryColor
-                      ),
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      child: Text("확인", style: TextStyle(color: Colors.white)),
-                    ),
+                    SizedBox(height: ratio.height * 500),
+
+                    CustomButton(text: '확인', func: (){}, buttonCount: 1)
                   ],
 
                 ),
