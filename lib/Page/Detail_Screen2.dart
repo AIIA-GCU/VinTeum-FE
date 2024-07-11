@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:vinteum/Common/color.dart';
+import 'package:vinteum/Common/custom_dialog.dart';
 import 'package:vinteum/main.dart';
 import 'package:vinteum/Page/Detail_Screen3.dart';
 
@@ -128,37 +129,16 @@ class DetailScreen2 extends StatelessWidget {
                             Image.asset("assets/img/icon.png"),
                             SizedBox(width: ratio.width * 30.0),
                             Container(
-                              width: ratio.width * 150,
-                              child: Text(
-                                '000님',
-                                style: TextStyle(fontSize: 18.0),
+                              child: Flexible(
+                                child: Text('000님',
+                                  style: TextStyle(fontSize: 18.0),),
                               ),
+                              width: ratio.width * 150,
                             ),
                             SizedBox(width: ratio.width * 70.0),
                             // 'X'아이콘 눌러서 그룹원 삭제기능
                             IconButton(onPressed: (){
-                              showDialog(context: context,
-                                builder: (BuildContext context){
-                                  return AlertDialog(
-                                    title: Text('정말로 삭제하시겠습니까?'),
-                                    actions: <Widget>[
-                                      TextButton(
-                                        child: Text('예'), // 누르면 홈화면으로 돌아간후 그룹 정보를 삭제시키기
-                                        onPressed: (){
-                                          Navigator.of(context).pop(); // 팝업 창 닫기
-                                          Navigator.of(context).pop(); // 현재 페이지 닫기
-                                        },
-                                      ),
-                                      TextButton(
-                                        child: Text('아니요'),  // 팝업창만 닫히고 그대로 유지
-                                        onPressed: (){
-                                          Navigator.of(context).pop(); // 팝업 창 닫기
-                                        },
-                                      ),
-                                    ],
-                                  );
-                                },
-                              );
+                              CustomDialog(context: context, title: "맴버 삭제", dialogContent: '맴버를 삭제하시겠습니까?', buttonText: " ", buttonCount: 2, func: (){});
                             },
                               icon: Icon(Icons.close,
                                 color: VinTeumColors.grey,
@@ -195,28 +175,7 @@ class DetailScreen2 extends StatelessWidget {
                             SizedBox(width: ratio.width * 70.0),
                             // 'X'아이콘 눌러서 그룹원 삭제기능
                             IconButton(onPressed: (){
-                              showDialog(context: context,
-                                builder: (BuildContext context){
-                                  return AlertDialog(
-                                    title: Text('정말로 삭제하시겠습니까?'),
-                                    actions: <Widget>[
-                                      TextButton(
-                                        child: Text('예'), // 누르면 홈화면으로 돌아간후 그룹 정보를 삭제시키기
-                                        onPressed: (){
-                                          Navigator.of(context).pop(); // 팝업 창 닫기
-                                          Navigator.of(context).pop(); // 현재 페이지 닫기
-                                        },
-                                      ),
-                                      TextButton(
-                                        child: Text('아니요'),  // 팝업창만 닫히고 그대로 유지
-                                        onPressed: (){
-                                          Navigator.of(context).pop(); // 팝업 창 닫기
-                                        },
-                                      ),
-                                    ],
-                                  );
-                                },
-                              );
+                              CustomDialog(context: context, title: "맴버 삭제", dialogContent: '맴버를 삭제하시겠습니까?', buttonText: " ", buttonCount: 2, func: (){});
                             },
                               icon: Icon(Icons.close,
                                 color: VinTeumColors.grey,
@@ -253,28 +212,7 @@ class DetailScreen2 extends StatelessWidget {
                             SizedBox(width: ratio.width * 70.0),
                             // 'X'아이콘 눌러서 그룹원 삭제기능
                             IconButton(onPressed: (){
-                              showDialog(context: context,
-                                builder: (BuildContext context){
-                                  return AlertDialog(
-                                    title: Text('정말로 삭제하시겠습니까?'),
-                                    actions: <Widget>[
-                                      TextButton(
-                                        child: Text('예'), // 누르면 홈화면으로 돌아간후 그룹 정보를 삭제시키기
-                                        onPressed: (){
-                                          Navigator.of(context).pop(); // 팝업 창 닫기
-                                          Navigator.of(context).pop(); // 현재 페이지 닫기
-                                        },
-                                      ),
-                                      TextButton(
-                                        child: Text('아니요'),  // 팝업창만 닫히고 그대로 유지
-                                        onPressed: (){
-                                          Navigator.of(context).pop(); // 팝업 창 닫기
-                                        },
-                                      ),
-                                    ],
-                                  );
-                                },
-                              );
+                              CustomDialog(context: context, title: "맴버 삭제", dialogContent: '맴버를 삭제하시겠습니까?', buttonText: " ", buttonCount: 2, func: (){});
                             },
                               icon: Icon(Icons.close,
                                 color: VinTeumColors.grey,
@@ -311,28 +249,7 @@ class DetailScreen2 extends StatelessWidget {
                             SizedBox(width: ratio.width * 70.0),
                             // 'X'아이콘 눌러서 그룹원 삭제기능
                             IconButton(onPressed: (){
-                              showDialog(context: context,
-                                builder: (BuildContext context){
-                                  return AlertDialog(
-                                    title: Text('정말로 삭제하시겠습니까?'),
-                                    actions: <Widget>[
-                                      TextButton(
-                                        child: Text('예'), // 누르면 홈화면으로 돌아간후 그룹 정보를 삭제시키기
-                                        onPressed: (){
-                                          Navigator.of(context).pop(); // 팝업 창 닫기
-                                          Navigator.of(context).pop(); // 현재 페이지 닫기
-                                        },
-                                      ),
-                                      TextButton(
-                                        child: Text('아니요'),  // 팝업창만 닫히고 그대로 유지
-                                        onPressed: (){
-                                          Navigator.of(context).pop(); // 팝업 창 닫기
-                                        },
-                                      ),
-                                    ],
-                                  );
-                                },
-                              );
+                              CustomDialog(context: context, title: "맴버 삭제", dialogContent: '맴버를 삭제하시겠습니까?', buttonText: " ", buttonCount: 2, func: (){});
                             },
                               icon: Icon(Icons.close,
                                 color: VinTeumColors.grey,
