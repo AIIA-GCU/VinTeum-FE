@@ -40,7 +40,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         style: TextStyle(
                             color: VinTeumColors.darkgrey,
                             fontSize: 25,
-                            fontWeight: FontWeight.bold)),
+                            fontWeight: FontWeight.bold,
+                        fontStyle: FontStyle.italic)),
                     Spacer(),
                     GestureDetector(
                         onTap: () {
