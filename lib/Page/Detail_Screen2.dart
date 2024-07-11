@@ -128,11 +128,11 @@ class DetailScreen2 extends StatelessWidget {
                             Image.asset("assets/img/icon.png"),
                             SizedBox(width: ratio.width * 30.0),
                             Container(
-                              child: Flexible(
-                                child: Text('000님',
-                                  style: TextStyle(fontSize: 18.0),),
-                              ),
                               width: ratio.width * 150,
+                              child: Text(
+                                '000님',
+                                style: TextStyle(fontSize: 18.0),
+                              ),
                             ),
                             SizedBox(width: ratio.width * 70.0),
                             // 'X'아이콘 눌러서 그룹원 삭제기능
