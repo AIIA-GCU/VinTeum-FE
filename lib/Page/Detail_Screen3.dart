@@ -10,6 +10,7 @@ class DetailScreen3 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Placeholder(
       child: Scaffold(
+        backgroundColor: VinTeumColors.background,
         appBar: AppBar(
           leading:IconButton(onPressed: (){
             Navigator.pop(context);
@@ -22,7 +23,7 @@ class DetailScreen3 extends StatelessWidget {
               color: Colors.black
           ),
           centerTitle: true,
-
+          backgroundColor: VinTeumColors.background,
         ),
         body: Column(
           children: [
@@ -41,7 +42,7 @@ class DetailScreen3 extends StatelessWidget {
                     SizedBox(
                       height: ratio.height * 15,
                     ),
-                    Text( "ooo님의 시간표",
+                    Text( "그룹원님의 시간표",
                       style: TextStyle(fontSize: 24),
                     ),
                     SizedBox(

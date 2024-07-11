@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:vinteum/Common/color.dart';
 import 'package:vinteum/main.dart';
 import 'package:vinteum/Page/Detail_Screen3.dart';
@@ -78,13 +79,16 @@ class DetailScreen2 extends StatelessWidget {
 
             SizedBox(height: ratio.height * 35,),
 
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 15),
-              child: Text("맴버",
-                style: TextStyle(
-                  color: VinTeumColors.darkgrey,
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Container(
+                padding: EdgeInsets.symmetric(horizontal: 30),
+                child: Text("맴버",
+                  style: TextStyle(
+                    color: VinTeumColors.darkgrey,
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold
+                  ),
                 ),
               ),
             ),
