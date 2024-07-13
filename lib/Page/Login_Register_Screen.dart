@@ -318,10 +318,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                 SizedBox(
                                   height: ratio.height * 8,
                                 ),
-                                CustomButton(
-                                    text: "로그인",
-                                    func: (){Navigator.push(context, MaterialPageRoute(builder: (context) => RootTab()));},
-                                    buttonCount: 1),
+
                                 CustomButton(
                                     text: "회원가입",
                                     func: (){Navigator.push(context, MaterialPageRoute(builder: (context) => RootTab()));},
@@ -435,17 +432,21 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                 SizedBox(
                                   height: ratio.height * 16,
                                 ),
-                                ElevatedButton(
-                                  style: ElevatedButton.styleFrom(
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(20)),
-                                      backgroundColor: VinTeumColors.primaryColor
-                                  ),
-                                  onPressed: () {
-                                    Navigator.push(context, MaterialPageRoute(builder: (context) => RootTab()));
-                                  },
-                                  child: Text("로그인", style: TextStyle(color: Colors.white)),
-                                ),
+                                // ElevatedButton(
+                                //   style: ElevatedButton.styleFrom(
+                                //       shape: RoundedRectangleBorder(
+                                //           borderRadius: BorderRadius.circular(20)),
+                                //       backgroundColor: VinTeumColors.primaryColor
+                                //   ),
+                                //   onPressed: () {
+                                //     Navigator.push(context, MaterialPageRoute(builder: (context) => RootTab()));
+                                //   },
+                                //   child: Text("로그인", style: TextStyle(color: Colors.white)),
+                                // ),
+                                CustomButton(
+                                    text: "로그인",
+                                    func: (){Navigator.push(context, MaterialPageRoute(builder: (context) => RootTab()));},
+                                    buttonCount: 1),
                               ],
                             ),
                           ),
