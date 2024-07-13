@@ -43,6 +43,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
             Positioned(
                 top: ratio.height * 200,
                 child: Text('VinTeum', style: TextStyle(fontSize: 48, fontFamily: 'Roboto',fontStyle: FontStyle.italic, fontWeight: FontWeight.w900),)),
+
             AnimatedPositioned(
               duration: Duration(milliseconds: 500),
               curve: Curves.easeIn,
