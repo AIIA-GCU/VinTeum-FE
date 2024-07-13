@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:vinteum/Common/color.dart';
 import 'package:vinteum/Common/custom_dialog.dart';
 import 'package:vinteum/Common/custom_switch.dart';
+import 'package:vinteum/Page/Home_Screen.dart';
+import 'package:vinteum/Page/Login_Register_Screen.dart';
 import 'package:vinteum/widget/dialog.dart';
 import 'package:vinteum/main.dart';
 
@@ -127,7 +129,11 @@ class _SettingScreenState extends State<SettingScreen> {
                           dialogContent: "로그아웃 하시겠습니까?",
                           buttonText: "",
                           buttonCount: 2, func: () {
-                            Navigator.pop(context);
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    LoginSignupScreen()));
                       });
                     },
                     child: Row(

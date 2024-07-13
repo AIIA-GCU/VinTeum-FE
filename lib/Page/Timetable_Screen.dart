@@ -5,6 +5,7 @@ import 'package:flutter/widgets.dart';
 import 'package:vinteum/Common/color.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:vinteum/Common/custom_button.dart';
+import 'package:vinteum/Common/custom_dialog.dart';
 import 'package:vinteum/main.dart';
 
 class TimetableScreen extends StatefulWidget {
@@ -32,7 +33,7 @@ class _TimetableScreenState extends State<TimetableScreen> {
   Future<void> uploadImage(ImageSource gallery) async {
     setState(() => loading = true);
     final XFile? pickedFile =
-        await picker.pickImage(source: ImageSource.gallery);
+    await picker.pickImage(source: ImageSource.gallery);
     setState(() {
       if (pickedFile != null) {
         fileName = pickedFile.name;
@@ -48,7 +49,7 @@ class _TimetableScreenState extends State<TimetableScreen> {
     return Scaffold(
       backgroundColor: VinTeumColors.background,
       appBar: AppBar(
-         backgroundColor: VinTeumColors.background,
+        backgroundColor: VinTeumColors.background,
         leading: IconButton(
           onPressed: () {
             Navigator.pop(context);
@@ -64,18 +65,19 @@ class _TimetableScreenState extends State<TimetableScreen> {
           children: [
             selected == false
                 ? Expanded(
-                    child: Container(
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Center(child: Text("시간표를 등록 해주세요", style: TextStyle(color: VinTeumColors.darkgrey, fontSize: 25))),
-                    ),
-                  )
+              child: Container(
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Center(child: Text("시간표를 등록 해주세요.", style: TextStyle(
+                    color: VinTeumColors.darkgrey, fontSize: 20))),
+              ),
+            )
                 : Expanded(
-                    child: Container(child: Image.file(File(image!.path))),
-                  ),
+              child: Container(child: Image.file(File(image!.path))),
+            ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 60),
               child: Row(
@@ -83,9 +85,18 @@ class _TimetableScreenState extends State<TimetableScreen> {
                 children: [
                   Expanded(
                     child: GestureDetector(
-                      onTap: ()  {
-                        setState(() {
-                          selected = false;
+                      onTap: () {
+                        CustomDialog(context: context,
+                            title: "시간표 등록",
+                            dialogContent: "시간표를 삭제하시겠습니까?",
+                            buttonText: "",
+                            buttonCount: 2,
+                            func: (){
+                              setState(() {
+                                selected = false;
+                                Navigator.pop(context);
+                            });
+
                         });
                       },
                       child: Container(
@@ -110,9 +121,9 @@ class _TimetableScreenState extends State<TimetableScreen> {
 
                   Expanded(
                     child: GestureDetector(
-                        onTap: () async {
-                          await uploadImage(ImageSource.gallery);
-                        },
+                      onTap: () async {
+                        await uploadImage(ImageSource.gallery);
+                      },
                       child: Container(
                           padding: const EdgeInsets.symmetric(vertical: 11),
                           width: double.infinity,
