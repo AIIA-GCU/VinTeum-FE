@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:vinteum/Common/custom_button.dart';
-import 'package:vinteum/Common/custom_dialog.dart';
+import 'package:vinteum/widget/custom_button.dart';
+import 'package:vinteum/widget/custom_dialog.dart';
 import 'package:vinteum/main.dart';
 import 'package:vinteum/Common/color.dart';
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:vinteum/Common/color.dart';
-import 'package:vinteum/Common/custom_dialog.dart';
-import 'package:vinteum/Common/custom_switch.dart';
+import 'package:vinteum/widget/custom_dialog.dart';
+import 'package:vinteum/widget/custom_switch.dart';
 import 'package:vinteum/Page/Home_Screen.dart';
 import 'package:vinteum/Page/Login_Register_Screen.dart';
 import 'package:vinteum/widget/dialog.dart';

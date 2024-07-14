@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:vinteum/Common/color.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:vinteum/Common/custom_button.dart';
-import 'package:vinteum/Common/custom_dialog.dart';
+import 'package:vinteum/widget/custom_button.dart';
+import 'package:vinteum/widget/custom_dialog.dart';
 import 'package:vinteum/main.dart';
 
 class TimetableScreen extends StatefulWidget {
