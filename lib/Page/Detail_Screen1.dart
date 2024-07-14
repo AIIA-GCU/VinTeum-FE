@@ -115,6 +115,8 @@ class DetailScreen extends StatelessWidget {
                 height: ratio.height * 30,
               ),
               CustomButton(text: "그룹 삭제",
+                  width: 315,
+                  height: 42,
                   func: () {
                 CustomDialog(context: context, title: "그룹 삭제", dialogContent: "그룹을 삭제하시겠습니까?", buttonText: "", buttonCount: 2, func: () {});
                   },

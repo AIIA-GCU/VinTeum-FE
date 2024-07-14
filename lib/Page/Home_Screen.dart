@@ -91,6 +91,8 @@ class _HomeScreenState extends State<HomeScreen> {
                           padding: const EdgeInsets.symmetric(horizontal: 20),
                           child: CustomButton(
                               text: "시간표 등록하기",
+                              width: 320,
+                              height: 48,
                               func: () {
                                 Navigator.push(
                                     context,

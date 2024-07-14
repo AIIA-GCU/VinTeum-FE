@@ -320,6 +320,8 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
 
                                 CustomButton(
                                     text: "회원가입",
+                                    width: 150,
+                                    height: 48,
                                     func: (){Navigator.push(context, MaterialPageRoute(builder: (context) => RootTab()));},
                                     buttonCount: 1),
                                
@@ -444,6 +446,8 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                 // ),
                                 CustomButton(
                                     text: "로그인",
+                                    width: 150,
+                                    height: 48,
                                     func: (){Navigator.push(context, MaterialPageRoute(builder: (context) => RootTab()));},
                                     buttonCount: 1),
                               ],

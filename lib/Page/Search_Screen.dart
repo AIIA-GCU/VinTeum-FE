@@ -60,6 +60,8 @@ class _SearchScreenState extends State<SearchScreen> {
               Spacer(),
               CustomButton(
                   text: "참여",
+                  width: 358,
+                  height: 48,
                   func: () {
                     setState(() {
                       if (codeNameController.text.isNotEmpty) {

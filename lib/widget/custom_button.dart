@@ -8,7 +8,11 @@ class CustomButton extends StatelessWidget {
   final Color textColor;
   final Color backgroundColor;
   final int buttonCount;
+  final int width;
+  final int height;
   const CustomButton({
+    required this.width,
+    required this.height,
     required this.text,
     required this.func,
     this.textColor = Colors.white,
@@ -21,8 +25,8 @@ class CustomButton extends StatelessWidget {
     return InkWell(
       onTap: func,
       child: buttonCount == 1 ? Container(
-        padding: const EdgeInsets.symmetric(vertical: 11),
-        width: double.infinity,
+        width: ratio.width * width,
+        height: ratio.height * height,
         decoration: BoxDecoration(
           color: backgroundColor,
           borderRadius: BorderRadius.circular(8),
@@ -42,8 +46,8 @@ class CustomButton extends StatelessWidget {
         children: [
           Expanded(
             child: Container(
-                padding: const EdgeInsets.symmetric(vertical: 11),
-                width: double.infinity,
+                width: ratio.width * width,
+                height: ratio.height * height,
                 decoration: BoxDecoration(
                   color: VinTeumColors.mainBlue,
                   borderRadius: BorderRadius.circular(8),
@@ -63,8 +67,8 @@ class CustomButton extends StatelessWidget {
           SizedBox(width: ratio.width * 25),
           Expanded(
             child: Container(
-                padding: const EdgeInsets.symmetric(vertical: 11),
-                width: double.infinity,
+                width: ratio.width * width,
+                height: ratio.height * height,
                 decoration: BoxDecoration(
                   color: VinTeumColors.subBlue2,
                   borderRadius: BorderRadius.circular(8),

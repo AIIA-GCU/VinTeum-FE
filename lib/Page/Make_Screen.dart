@@ -67,6 +67,8 @@ class _MakeScreenState extends State<MakeScreen> {
               Spacer(),
               CustomButton(
                   text: "생성",
+                  width: 358,
+                  height: 48,
                   func: () {
                     setState(() {
                       selected = true;
