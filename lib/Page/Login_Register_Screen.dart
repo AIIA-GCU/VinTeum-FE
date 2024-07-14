@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:vinteum/Common/custom_button.dart';
 import 'package:vinteum/main.dart';
-import 'package:vinteum/Common/color.dart';
 import 'package:vinteum/widget/root_tab.dart';
 
 class LoginSignupScreen extends StatefulWidget {
@@ -13,7 +12,7 @@ class LoginSignupScreen extends StatefulWidget {
 }
 
 class _LoginSignupScreenState extends State<LoginSignupScreen> {
-  bool isSignupScreen = true;
+  bool isSignupScreen = false;
   final _formKey = GlobalKey<FormState>();
   String userID = '';
   String userName = '';
