@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:vinteum/Common/color.dart';
-import 'package:vinteum/Common/custom_dialog.dart';
+import 'package:vinteum/widget/custom_dialog.dart';
 import 'package:vinteum/Page/Detail_Screen3.dart';
 import 'package:vinteum/main.dart';
 
