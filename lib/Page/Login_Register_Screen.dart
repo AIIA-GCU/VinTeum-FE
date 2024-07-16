@@ -34,23 +34,23 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
           alignment: Alignment.center,
           children: [
             Positioned(
-                top: ratio.height * 83,
+                top: ratio.height * 140,
                 child: SizedBox(
                     width: ratio.width * 110,
                     height: ratio.height * 100,
                     child: Image.asset('assets/logo/logo.png'))),
             Positioned(
-                top: ratio.height * 200,
+                top: ratio.height * 240,
                 child: Text('VinTeum', style: TextStyle(fontSize: 48, fontFamily: 'Roboto',fontStyle: FontStyle.italic, fontWeight: FontWeight.w900),)),
 
             AnimatedPositioned(
               duration: Duration(milliseconds: 500),
               curve: Curves.easeIn,
-              top: ratio.height * 270,
+              top: ratio.height * 340,
               child: AnimatedContainer(
                 duration: Duration(milliseconds: 500),
                 curve: Curves.easeIn,
-                height: isSignupScreen ? ratio.height * 353 : 250,
+                height: isSignupScreen ? ratio.height * 383 : 250,
                 width: ratio.width * 335,
                 decoration: BoxDecoration(
                   color: Colors.white,
@@ -81,7 +81,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                             child: Column(
                               children: [
                                 Text(
-                                  'Login',
+                                  '로그인',
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 14,
@@ -101,7 +101,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                             child: Column(
                               children: [
                                 Text(
-                                  'Register',
+                                  '회원가입',
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 14,
@@ -315,7 +315,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                   ),
                                 ),
                                 SizedBox(
-                                  height: ratio.height * 8,
+                                  height: ratio.height * 13,
                                 ),
 
                                 CustomButton(
@@ -324,7 +324,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                     height: 48,
                                     func: (){Navigator.push(context, MaterialPageRoute(builder: (context) => RootTab()));},
                                     buttonCount: 1),
-                               
+
                               ],
                             ),
                           ),
@@ -433,17 +433,6 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                 SizedBox(
                                   height: ratio.height * 16,
                                 ),
-                                // ElevatedButton(
-                                //   style: ElevatedButton.styleFrom(
-                                //       shape: RoundedRectangleBorder(
-                                //           borderRadius: BorderRadius.circular(20)),
-                                //       backgroundColor: VinTeumColors.primaryColor
-                                //   ),
-                                //   onPressed: () {
-                                //     Navigator.push(context, MaterialPageRoute(builder: (context) => RootTab()));
-                                //   },
-                                //   child: Text("로그인", style: TextStyle(color: Colors.white)),
-                                // ),
                                 CustomButton(
                                     text: "로그인",
                                     width: 150,
