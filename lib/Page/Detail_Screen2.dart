@@ -10,9 +10,13 @@ import 'package:vinteum/widget/Member_List.dart';
 class DetailScreen2 extends StatelessWidget {
   const DetailScreen2({super.key});
 
+
   @override
   Widget build(BuildContext context) {
     List<Widget> memberData = [
+      MemberList(userName: "000"),
+      MemberList(userName: "아이아"),
+      MemberList(userName: "아이아"),
       MemberList(userName: "000"),
       MemberList(userName: "아이아"),
     ];

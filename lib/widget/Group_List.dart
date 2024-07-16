@@ -5,9 +5,10 @@ import 'package:vinteum/Common/color.dart';
 import 'package:vinteum/main.dart';
 import 'package:vinteum/Page/Detail_Screen1.dart';
 
+
 class GroupList extends StatelessWidget {
   final String title;
-  final String number;
+  final int number;
   const GroupList({
     required this.title,
     required this.number,
@@ -16,9 +17,12 @@ class GroupList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context) => DetailScreen()));
-      },
+        onTap: () async {
+          await Navigator.of(context).push(MaterialPageRoute(
+            builder: (BuildContext context) =>
+                DetailScreen(number: number),
+          ));
+        },
       child: Container(
         margin: EdgeInsets.fromLTRB(0, 17, 0, 0),
         padding: const EdgeInsets.symmetric(vertical: 17, horizontal: 14),

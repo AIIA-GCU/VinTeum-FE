@@ -6,9 +6,16 @@ import 'package:vinteum/widget/custom_dialog.dart';
 import 'package:vinteum/Page/Detail_Screen2.dart';
 import 'package:vinteum/main.dart';
 
-class DetailScreen extends StatelessWidget {
-  const DetailScreen({super.key});
 
+class DetailScreen extends StatefulWidget {
+  const DetailScreen({super.key, required this.number});
+  final int? number;
+
+  @override
+  State<DetailScreen> createState() => _DetailScreenState();
+}
+
+class _DetailScreenState extends State<DetailScreen> {
   @override
   Widget build(BuildContext context) {
     return Placeholder(
@@ -24,7 +31,8 @@ class DetailScreen extends StatelessWidget {
               color: VinTeumColors.grey,
             ),
           ),
-          title: Text('그룹명'),
+          title: Text(
+              "그룹명"),
           //타이틀 -> 폰트 바꾸기
           titleTextStyle: TextStyle(
               fontSize: 30, fontWeight: FontWeight.bold, color: Colors.black),
@@ -85,7 +93,7 @@ class DetailScreen extends StatelessWidget {
                       ),
                       child: Center(
                         child: Text(
-                          '그룹 인원: 2명',
+                          '그룹 인원: ${widget.number}',
                           style: TextStyle(
                             fontSize: 16,
                             color: VinTeumColors.darkgrey,
