@@ -24,6 +24,7 @@ class _TimetableScreenState extends State<TimetableScreen> {
   bool loading = false;
   String imageName = "unselected";
   String? fileName;
+  String? filePath;
 
   @override
   void initState() {
@@ -37,6 +38,7 @@ class _TimetableScreenState extends State<TimetableScreen> {
     setState(() {
       if (pickedFile != null) {
         fileName = pickedFile.name;
+        filePath = pickedFile.path;
         image = pickedFile;
         selected = true;
       }
