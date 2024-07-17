@@ -23,8 +23,8 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     List<Widget> data = [
-      // GroupList(title: "그룹1", number: "5"),
-      // GroupList(title: "그룹1", number: "5"),
+      GroupList(title: "그룹1", number: 5),
+      GroupList(title: "그룹1", number: 3),
       // GroupList(title: "그룹1", number: "5"),
       // GroupList(title: "그룹1", number: "5"),
     ];

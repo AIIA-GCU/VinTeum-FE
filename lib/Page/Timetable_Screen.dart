@@ -26,15 +26,20 @@ class _TimetableScreenState extends State<TimetableScreen> {
   String? fileName;
   String? filePath;
 
+  bool isRegular = true;
+  bool isCustom = false;
+  late List<bool> isSelected;
+
   @override
   void initState() {
+    isSelected = [isRegular, isCustom];
     super.initState();
   }
 
   Future<void> uploadImage(ImageSource gallery) async {
     setState(() => loading = true);
     final XFile? pickedFile =
-    await picker.pickImage(source: ImageSource.gallery);
+        await picker.pickImage(source: ImageSource.gallery);
     setState(() {
       if (pickedFile != null) {
         fileName = pickedFile.name;
@@ -62,94 +67,145 @@ class _TimetableScreenState extends State<TimetableScreen> {
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30)),
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+        padding: const EdgeInsets.fromLTRB(20, 20, 20, 50),
         child: Column(
           children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Container(
+                  height: ratio.height * 33,
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.all(Radius.circular(8))),
+                  child: ToggleButtons(
+                      disabledColor: Colors.white,
+                      renderBorder: true,
+                      borderRadius: BorderRadius.circular(6),
+                      borderWidth: 1,
+                      borderColor: VinTeumColors.mainBlue,
+                      selectedBorderColor: VinTeumColors.mainBlue,
+                      fillColor: VinTeumColors.mainBlue,
+                      color: VinTeumColors.mainBlue,
+                      selectedColor: Colors.white,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 28),
+                          child: Text("정규",
+                              style: TextStyle(fontWeight: FontWeight.bold)),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 22),
+                          child: Text("커스텀",
+                              style: TextStyle(fontWeight: FontWeight.bold)),
+                        )
+                      ],
+                      isSelected: isSelected,
+                      onPressed: toggleSelect),
+                ),
+                SizedBox(width: ratio.width * 29),
+                Container(
+                  width: ratio.width * 75,
+                  height: ratio.height * 34,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(20),
+                    ),
+                    border: Border.all(color: VinTeumColors.darkgrey),
+                  ),
+                  child: GestureDetector(
+                    onTap: () {
+                      CustomDialog(
+                          context: context,
+                          title: "시간표 등록",
+                          dialogContent: "시간표를 삭제하시겠습니까?",
+                          buttonText: "",
+                          buttonCount: 2,
+                          func: () {
+                            setState(() {
+                              selected = false;
+                              Navigator.pop(context);
+                            });
+                          });
+                    },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.refresh,
+                            color: VinTeumColors.grey3, size: 19),
+                        SizedBox(width: ratio.width * 3),
+                        Text(
+                          '초기화',
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                            color: VinTeumColors.grey3,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
             selected == false
                 ? Expanded(
-              child: Container(
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: Center(child: Text("시간표를 등록 해주세요.", style: TextStyle(
-                    color: VinTeumColors.darkgrey, fontSize: 20))),
-              ),
-            )
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 20),
+                      child: Container(
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            SizedBox(height: ratio.height * 20),
+                            isRegular == true
+                                ? Center(
+                                    child: Text("정규 시간표를 등록 해주세요.",
+                                        style: TextStyle(
+                                            color: VinTeumColors.darkgrey,
+                                            fontSize: 20)))
+                                : Center(
+                                    child: Text("커스텀 시간표를 등록 해주세요.",
+                                        style: TextStyle(
+                                            color: VinTeumColors.darkgrey,
+                                            fontSize: 20))),
+                          ],
+                        ),
+                      ),
+                    ),
+                  )
                 : Expanded(
-              child: Container(child: Image.file(File(image!.path))),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 60),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Expanded(
-                    child: GestureDetector(
-                      onTap: () {
-                        CustomDialog(context: context,
-                            title: "시간표 등록",
-                            dialogContent: "시간표를 삭제하시겠습니까?",
-                            buttonText: "",
-                            buttonCount: 2,
-                            func: (){
-                              setState(() {
-                                selected = false;
-                                Navigator.pop(context);
-                            });
-
-                        });
-                      },
-                      child: Container(
-                          padding: const EdgeInsets.symmetric(vertical: 11),
-                          width: double.infinity,
-                          decoration: BoxDecoration(
-                            color: VinTeumColors.subBlue2,
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          child: Center(
-                            child: Text(
-                              "삭제",
-                              style: TextStyle(
-                                  fontSize: 20,
-                                  color: VinTeumColors.mainBlue,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          )),
-                    ),
+                    child: Container(child: Image.file(File(image!.path))),
                   ),
-                  SizedBox(width: ratio.width * 30),
-
-                  Expanded(
-                    child: GestureDetector(
-                      onTap: () async {
-                        await uploadImage(ImageSource.gallery);
-                      },
-                      child: Container(
-                          padding: const EdgeInsets.symmetric(vertical: 11),
-                          width: double.infinity,
-                          decoration: BoxDecoration(
-                            color: VinTeumColors.mainBlue,
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          child: Center(
-                            child: Text(
-                              "등록",
-                              style: TextStyle(
-                                  fontSize: 20,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          )),
-                    ),
-                  ),
-                ],
-              ),
+            CustomButton(
+              width: 370,
+              height: 48,
+              text: "등록",
+              func: () async {
+                await uploadImage(ImageSource.gallery);
+              },
+              buttonCount: 1,
             )
           ],
         ),
       ),
     );
+  }
+
+  void toggleSelect(value) {
+    if (value == 0) {
+      isRegular = true;
+      isCustom = false;
+    } else {
+      isRegular = false;
+      isCustom = true;
+    }
+    setState(() {
+      isSelected = [isRegular, isCustom];
+    });
   }
 }

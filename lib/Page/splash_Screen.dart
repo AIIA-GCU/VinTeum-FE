@@ -38,7 +38,7 @@ class _SplashScreenState extends State<SplashScreen> {
               child: Image.asset("assets/logo/logo.png"),
             ),
             SizedBox(height: 20),
-            Text("빈 시간을 찾는 플랫폼 빈틈.", style: TextStyle(fontSize: 24),),
+            Text("빈 시간을 찾는 플랫폼 빈틈.", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),),
           ],
         ),
       ),
