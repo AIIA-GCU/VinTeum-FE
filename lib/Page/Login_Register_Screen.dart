@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:vinteum/Page/Help_screen.dart';
 import 'package:vinteum/widget/custom_button.dart';
 import 'package:vinteum/main.dart';
 import 'package:vinteum/widget/root_tab.dart';
@@ -322,7 +323,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                     text: "회원가입",
                                     width: 150,
                                     height: 48,
-                                    func: (){Navigator.push(context, MaterialPageRoute(builder: (context) => RootTab()));},
+                                    func: (){Navigator.push(context, MaterialPageRoute(builder: (context) => HelpScreen()));},
                                     buttonCount: 1),
 
                               ],
@@ -437,7 +438,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                     text: "로그인",
                                     width: 150,
                                     height: 48,
-                                    func: (){Navigator.push(context, MaterialPageRoute(builder: (context) => RootTab()));},
+                                    func: (){Navigator.push(context, MaterialPageRoute(builder: (context) => HelpScreen()));},
                                     buttonCount: 1),
                               ],
                             ),

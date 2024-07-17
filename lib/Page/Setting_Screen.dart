@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vinteum/Common/color.dart';
+import 'package:vinteum/Page/Help_screen.dart';
 import 'package:vinteum/widget/custom_dialog.dart';
 import 'package:vinteum/widget/custom_switch.dart';
 import 'package:vinteum/Page/Home_Screen.dart';
@@ -44,7 +45,7 @@ class _SettingScreenState extends State<SettingScreen> {
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 45),
           child: Container(
               width: double.infinity,
-              height: ratio.height * 350,
+              height: ratio.height * 430,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12), color: Colors.white),
               child: Column(children: [
@@ -143,6 +144,36 @@ class _SettingScreenState extends State<SettingScreen> {
                         SizedBox(width: 12),
                         Text(
                           "로그아웃",
+                          style: TextStyle(color: VinTeumColors.grey3),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+                SizedBox(height: ratio.height * 30),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: OutlinedButton(
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.white,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10)),
+                        padding:
+                        EdgeInsets.symmetric(horizontal: 17, vertical: 20)),
+                    onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    HelpScreen()));
+                    },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Icon(Icons.help_outline, color: VinTeumColors.grey3),
+                        SizedBox(width: 12),
+                        Text(
+                          "도움말",
                           style: TextStyle(color: VinTeumColors.grey3),
                         )
                       ],
