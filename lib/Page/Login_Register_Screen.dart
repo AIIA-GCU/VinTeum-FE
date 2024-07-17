@@ -4,6 +4,7 @@ import 'package:vinteum/Page/Help_screen.dart';
 import 'package:vinteum/widget/custom_button.dart';
 import 'package:vinteum/main.dart';
 import 'package:vinteum/widget/root_tab.dart';
+import 'package:vinteum/widget/time_table.dart';
 
 class LoginSignupScreen extends StatefulWidget {
   const LoginSignupScreen({super.key});
@@ -438,7 +439,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                     text: "로그인",
                                     width: 150,
                                     height: 48,
-                                    func: (){Navigator.push(context, MaterialPageRoute(builder: (context) => HelpScreen()));},
+                                    func: (){Navigator.push(context, MaterialPageRoute(builder: (context) => TimeTable()));},
                                     buttonCount: 1),
                               ],
                             ),
