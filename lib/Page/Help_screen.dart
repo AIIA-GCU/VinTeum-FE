@@ -16,13 +16,15 @@ class _HelpScreenState extends State<HelpScreen> {
   final PageController pageController = PageController(initialPage: 0);
   int currentPageIndex = 0;
 
-  final help1_title = "시간표의 빈틈을 찾아드려요";
+  final help1_title = "시간표의 빈틈을 찾아드려요!";
   final help1_content = "메인페이지 내 시간표 등록 버튼을 통해 시간표를 관리하세요.";
-  final help1_subContent = "에브리타임 > 시간표 > 설정 > 이미지로 저장 후 시간표를 등록할 수 있습니다.";
+  final help1_subContent = "에브리타임 > 시간표 > 설정 > 이미지로 저장 후 "
+      "              시간표를 등록할 수 있습니다.";
 
-  final help2_title = "시간표의 종류에 따라 등록하세요";
+  final help2_title = "시간표의 종류에 따라 등록하세요!";
   final help2_content = "자신의 시간표 종류를 선택 후 시간표 이미지를 등록하세요.";
-  final help2_subContent = "정규 시간표 : 주말이 포함되지 않은 시간표 커스텀 시간표 : 주말이 포함된 시간표";
+  final help2_subContent = "정규 시간표 : 주말이 포함되지 않은 시간표"
+      "                     커스텀 시간표 : 주말이 포함된 시간표";
 
   final help3_title = "등록된 시간표는 수정이 가능해요!";
   final help3_content = "시간표에서 원하는 일정을 등록해보세요.";
