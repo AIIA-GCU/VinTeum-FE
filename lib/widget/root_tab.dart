@@ -56,10 +56,10 @@ class _RootTabState extends State<RootTab> with SingleTickerProviderStateMixin {
           selectedItemColor: VinTeumColors.mainBlue,
           unselectedItemColor: VinTeumColors.darkgrey,
           backgroundColor: Colors.white,
-          selectedFontSize: 0,
+          selectedFontSize: 12,
           selectedLabelStyle: TextStyle(color: Colors.black),
           unselectedLabelStyle: TextStyle(color: Colors.black),
-          unselectedFontSize: 0,
+          unselectedFontSize: 12,
           type: BottomNavigationBarType.fixed,
           onTap: (int index){
             controller.animateTo(index);
@@ -67,8 +67,8 @@ class _RootTabState extends State<RootTab> with SingleTickerProviderStateMixin {
           currentIndex: index,
           items: [
             BottomNavigationBarItem(icon: Icon(CupertinoIcons.home,size: 30), label: '홈'),
-            BottomNavigationBarItem(icon: Icon(CupertinoIcons.plus_circle,size: 30), label: '그룹 생성'),
-            BottomNavigationBarItem(icon: Icon(Icons.search,size: 30), label: '그룹 참여'),
+            BottomNavigationBarItem(icon: Icon(CupertinoIcons.plus_circle,size: 30), label: '생성'),
+            BottomNavigationBarItem(icon: Icon(Icons.search,size: 30), label: '참여'),
           ]
       ),
     );
