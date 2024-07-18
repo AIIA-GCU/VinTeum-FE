@@ -128,7 +128,8 @@ class _HelpScreenState extends State<HelpScreen> {
                 ],
               ),
             ),
-            SmoothPageIndicator(
+            currentPageIndex != 2
+            ? SmoothPageIndicator(
                 controller: pageController, //// PageController
                 count: 3,
                 effect: WormEffect(
@@ -136,11 +137,12 @@ class _HelpScreenState extends State<HelpScreen> {
                     activeDotColor: VinTeumColors.mainBlue,
                     dotHeight: 10,
                     dotWidth: 10),
-                onDotClicked: (index) {}),
+                onDotClicked: (index) {})
+            :
             currentPageIndex == 2
                 ? Column(
                     children: [
-                      SizedBox(height: ratio.height * 30),
+                      SizedBox(height: ratio.height * 48),
                       InkWell(
                           onTap: () {
                             Navigator.push(
@@ -165,7 +167,7 @@ class _HelpScreenState extends State<HelpScreen> {
                       ),
                     ],
                   ) :
-                SizedBox(height: ratio.height * 40)
+                SizedBox(height: ratio.height * 0)
                 // : SizedBox(height: ratio.height * 102),
           ],
         ),
