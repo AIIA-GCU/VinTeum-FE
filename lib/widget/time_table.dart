@@ -176,9 +176,9 @@ class ColorGenerator {
   static Random random = Random();
 
   static Color getRandomColor() {
-    int red = random.nextInt(90) + 120;    // 150 ~ 205
-    int green = random.nextInt(30) + 160;  // 150 ~ 205
-    int blue = random.nextInt(15) + 240;   // 200 ~ 255
+    int red = random.nextInt(90) + 120;    // 120 ~ 210
+    int green = random.nextInt(30) + 160;  // 160 ~ 190
+    int blue = random.nextInt(15) + 240;   // 240 ~ 255
 
 
     return Color.fromARGB(255, red, green, blue);
