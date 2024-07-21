@@ -8,6 +8,7 @@ import 'package:vinteum/widget/dialog.dart';
 import 'package:vinteum/Page/Setting_Screen.dart';
 import 'package:vinteum/widget/Group_List.dart';
 import 'package:vinteum/Page/Timetable_Screen.dart';
+import 'package:vinteum/Page/Timetable_Manager.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -98,7 +99,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) =>
-                                            TimetableScreen(selected: false)));
+                                            TimetableManager()));
                               },
                               buttonCount: 1),
                         )
