@@ -16,19 +16,33 @@ class _TimetableManagerState extends State<TimetableManager> {
   final TextEditingController start_time = TextEditingController();
   final TextEditingController end_time = TextEditingController();
 
+  double _bottomSheetHeight = 100; // Initial height for the BottomSheet
+  final double _minHeight = 100;
+  final double _maxHeight = 600;
+
   void _showBottomSheet() {
     showModalBottomSheet<void>(
       context: context,
       isScrollControlled: true,
       backgroundColor: Colors.white,
       builder: (BuildContext context) {
-        return DraggableScrollableSheet(
-          expand: false,
-          initialChildSize: 0.2, // Initial size so header is visible
-          minChildSize: 0.2, // Minimum size to ensure header is visible
-          maxChildSize: 0.8, // Maximum size user can drag up to
-          builder: (BuildContext context, ScrollController scrollController) {
-            return Container(
+        return GestureDetector(
+            onVerticalDragUpdate: (details) {
+          setState(() {
+            _bottomSheetHeight -= details.primaryDelta!;
+            if (_bottomSheetHeight < _minHeight) {
+              _bottomSheetHeight = _minHeight;
+            } else if (_bottomSheetHeight > _maxHeight) {
+              _bottomSheetHeight = _maxHeight;
+            }
+          });
+        },
+        onVerticalDragEnd: (details) {
+        // Optionally animate to a specific size or state
+        },
+        child: AnimatedContainer(
+              duration: Duration(milliseconds: 300),
+              height: _bottomSheetHeight,
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.only(
@@ -72,10 +86,9 @@ class _TimetableManagerState extends State<TimetableManager> {
                       ),
                     ),
                   ),
-                  // Main content area
                   Expanded(
                     child: ListView(
-                      controller: scrollController,
+                      // controller: scrollController,
                       padding: EdgeInsets.only(left: 30, right: 30, top: 5),
                       children: <Widget>[
                         TextField(
@@ -88,7 +101,7 @@ class _TimetableManagerState extends State<TimetableManager> {
                             ),
                           ),
                         ),
-                        SizedBox(height: ratio.height * 5.0),
+                        SizedBox(height: ratio.height * 15.0),
                         TextField(
                           controller: date,
                           decoration: InputDecoration(
@@ -99,7 +112,7 @@ class _TimetableManagerState extends State<TimetableManager> {
                             ),
                           ),
                         ),
-                        SizedBox(height: ratio.height * 5.0),
+                        SizedBox(height: ratio.height * 15.0),
                         TextField(
                           controller: start_time,
                           decoration: InputDecoration(
@@ -111,7 +124,7 @@ class _TimetableManagerState extends State<TimetableManager> {
                           ),
                           keyboardType: TextInputType.datetime,
                         ),
-                        SizedBox(height: ratio.height * 5.0),
+                        SizedBox(height: ratio.height * 15.0),
 
                         TextField(
                           controller: end_time,
@@ -134,7 +147,7 @@ class _TimetableManagerState extends State<TimetableManager> {
                               Navigator.pop(context);
 
                             },
-                            buttonCount: 2)
+                            buttonCount: 2),
                         // ElevatedButton(
                         //   child: Text('저장'),
                         //   onPressed: () {
@@ -150,11 +163,10 @@ class _TimetableManagerState extends State<TimetableManager> {
                   ),
                 ],
               ),
+             ),
             );
           },
         );
-      },
-    );
   }
 
   @override
@@ -216,7 +228,7 @@ class _TimetableManagerState extends State<TimetableManager> {
                           ),
                         ),
                       ),
-                      SizedBox(height: ratio.height * 15),
+                      SizedBox(height: ratio.height * 7),
                       Text('일정 등록하기',
                           style: TextStyle(fontSize:16)),
                     ],
