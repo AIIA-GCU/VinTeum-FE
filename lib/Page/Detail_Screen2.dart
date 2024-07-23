@@ -6,6 +6,7 @@ import 'package:vinteum/widget/custom_dialog.dart';
 import 'package:vinteum/main.dart';
 import 'package:vinteum/Page/Detail_Screen3.dart';
 import 'package:vinteum/widget/Member_List.dart';
+import 'package:vinteum/widget/MemberRequest_List.dart';
 
 class DetailScreen2 extends StatelessWidget {
   const DetailScreen2({super.key});
@@ -19,6 +20,10 @@ class DetailScreen2 extends StatelessWidget {
       MemberList(userName: "아이아"),
       MemberList(userName: "000"),
       MemberList(userName: "아이아"),
+    ];
+    List<Widget> memberrequest  = [
+      MemberRequest(userName: '000'),
+      MemberRequest(userName: 'XXX')
     ];
     return Placeholder(
       child: Scaffold(
@@ -43,7 +48,7 @@ class DetailScreen2 extends StatelessWidget {
           centerTitle: true,
           backgroundColor: VinTeumColors.background,
         ),
-        body: Padding(
+        body: SingleChildScrollView(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
             children: [
@@ -95,6 +100,7 @@ class DetailScreen2 extends StatelessWidget {
               SizedBox(
                 height: ratio.height * 35,
               ),
+              // 맴버
               Align(
                 alignment: Alignment.centerLeft,
                 child: Container(
@@ -129,6 +135,44 @@ class DetailScreen2 extends StatelessWidget {
                       }),
                 ),
               ),
+              SizedBox(height: ratio.height * 35,),
+
+              //가입 요청
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  child: Text(
+                    "가입 요청",
+                    style: TextStyle(
+                        color: VinTeumColors.darkgrey,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: ratio.height * 10,
+              ),
+              Container(
+                height: ratio.height * 227,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(12),
+                  ),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+                  child: ListView.builder(
+                      scrollDirection: Axis.vertical,
+                        itemCount: memberrequest.length,
+                      itemBuilder: (context, index) {
+                        return memberrequest[index];
+                      }),
+                ),
+              ),
+              SizedBox(height: ratio.height * 50,)
             ],
           ),
         ),
