@@ -41,7 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Text("Vinteum",
+                    Text("VinTeum",
                         style: TextStyle(
                             color: VinTeumColors.darkgrey,
                             fontSize: 25,
