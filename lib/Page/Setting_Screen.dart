@@ -7,6 +7,7 @@ import 'package:vinteum/Page/Home_Screen.dart';
 import 'package:vinteum/Page/Login_Register_Screen.dart';
 import 'package:vinteum/widget/dialog.dart';
 import 'package:vinteum/main.dart';
+import 'package:vinteum/widget/root_tab.dart';
 
 
 class SettingScreen extends StatefulWidget {
@@ -33,7 +34,7 @@ class _SettingScreenState extends State<SettingScreen> {
         backgroundColor: VinTeumColors.background,
         leading: IconButton(
           onPressed: () {
-            Navigator.pop(context);
+            Navigator.push(context, MaterialPageRoute(builder: (context) => RootTab()));
           },
           icon: Icon(Icons.arrow_back_ios),
         ),
@@ -160,12 +161,11 @@ class _SettingScreenState extends State<SettingScreen> {
                             borderRadius: BorderRadius.circular(10)),
                         padding:
                         EdgeInsets.symmetric(horizontal: 17, vertical: 20)),
-                    onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    HelpScreen()));
+                    onPressed: () async {
+                      await Navigator.of(context).push(MaterialPageRoute(
+                        builder: (BuildContext context) =>
+                            HelpScreen(where: "setting",),
+                      ));
                     },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,

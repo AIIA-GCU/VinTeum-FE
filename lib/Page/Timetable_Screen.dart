@@ -8,6 +8,8 @@ import 'package:vinteum/widget/custom_dialog.dart';
 import 'package:vinteum/main.dart';
 import 'package:vinteum/widget/time_table.dart';
 
+import '../widget/root_tab.dart';
+
 class TimetableScreen extends StatefulWidget {
   const TimetableScreen({super.key, required this.selected});
 
@@ -61,7 +63,7 @@ class _TimetableScreenState extends State<TimetableScreen> {
         backgroundColor: VinTeumColors.background,
         leading: IconButton(
           onPressed: () {
-            Navigator.pop(context);
+            Navigator.push(context, MaterialPageRoute(builder: (context) => RootTab()));
           },
           icon: Icon(Icons.arrow_back_ios),
         ),

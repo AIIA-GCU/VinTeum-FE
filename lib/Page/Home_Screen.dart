@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:vinteum/Common/color.dart';
+import 'package:vinteum/Page/Help_screen.dart';
+import 'package:vinteum/Page/Timetable_Screen.dart';
 import 'package:vinteum/widget/custom_button.dart';
 import 'package:vinteum/Page/Alarm_Screen.dart';
 import 'package:vinteum/main.dart';
 import 'package:vinteum/Page/Setting_Screen.dart';
 import 'package:vinteum/widget/Group_List.dart';
 import 'package:vinteum/Page/Timetable_Manager.dart';
+import 'package:vinteum/widget/time_table.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -91,12 +94,11 @@ class _HomeScreenState extends State<HomeScreen> {
                               text: "시간표 등록하기",
                               width: 320,
                               height: 48,
-                              func: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            TimetableManager()));
+                              func: () async {
+                                await Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (BuildContext context) =>
+                                      HelpScreen(where: "home",),
+                                ));
                               },
                               buttonCount: 1),
                         )
