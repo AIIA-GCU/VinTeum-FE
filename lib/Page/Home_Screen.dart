@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:vinteum/Common/color.dart';
 import 'package:vinteum/widget/custom_button.dart';
-import 'package:vinteum/widget/custom_dialog.dart';
 import 'package:vinteum/Page/Alarm_Screen.dart';
 import 'package:vinteum/main.dart';
-import 'package:vinteum/widget/dialog.dart';
 import 'package:vinteum/Page/Setting_Screen.dart';
 import 'package:vinteum/widget/Group_List.dart';
-import 'package:vinteum/Page/Timetable_Screen.dart';
 import 'package:vinteum/Page/Timetable_Manager.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -24,10 +21,10 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     List<Widget> data = [
-      GroupList(title: "그룹1", number: 5),
-      GroupList(title: "그룹1", number: 3),
-      // GroupList(title: "그룹1", number: "5"),
-      // GroupList(title: "그룹1", number: "5"),
+      GroupList(title: "팀플 1조", number: 5),
+      GroupList(title: "밥약", number: 3),
+      GroupList(title: "프로그래밍 스터디", number: 7),
+      GroupList(title: "이건 어차피 안보일껄 ㅋㅋ", number: 7),
     ];
     return Scaffold(
       backgroundColor: VinTeumColors.background,
