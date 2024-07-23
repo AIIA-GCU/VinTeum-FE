@@ -29,6 +29,7 @@ class DetailScreen2 extends StatelessWidget {
       child: Scaffold(
         backgroundColor: VinTeumColors.background,
         appBar: AppBar(
+          scrolledUnderElevation: 0,
           leading: IconButton(
             onPressed: () {
               Navigator.pop(context);
