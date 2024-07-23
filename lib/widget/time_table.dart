@@ -18,28 +18,23 @@ class _TimeTableState extends State<TimeTable> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: VinTeumColors.background,
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-          child: Container(
-            height: ratio.height * 768,
-            decoration: BoxDecoration(
-              border: Border.all(color: VinTeumColors.darkgrey),
-              borderRadius: BorderRadius.circular(12),
-              color: Colors.white,
-            ),
-            child: Row(
-              children: [
-                timeColumn(),
-                for (int i = 0; i < week.length; i++) ...dayColumn(i),
-              ],
-            ),
+    return Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+        child: Container(
+          height: ratio.height * 768,
+          decoration: BoxDecoration(
+            border: Border.all(color: VinTeumColors.darkgrey),
+            borderRadius: BorderRadius.circular(12),
+            color: Colors.white,
+          ),
+          child: Row(
+            children: [
+              timeColumn(),
+              for (int i = 0; i < week.length; i++) ...dayColumn(i),
+            ],
           ),
         ),
-      ),
-    );
+      );
   }
 
   Widget timeColumn() {
