@@ -60,7 +60,7 @@ class DetailScreen3 extends StatelessWidget {
                       height: ratio.height * 21,
                     ),
 
-                    SizedBox(height: ratio.height * 500),
+                    SizedBox(height: ratio.height * 545),
 
                     CustomButton(text: '확인', width: 315,height: 42, func: (){Navigator.pop(context);}, buttonCount: 1)
                   ],
