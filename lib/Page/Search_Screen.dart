@@ -74,6 +74,7 @@ class _SearchScreenState extends State<SearchScreen> {
                             func: () {
                               Navigator.pop(context);
                               widget.callback();
+                              codeNameController.text = '';
                             });
                       } else {
                         CustomDialog(

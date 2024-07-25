@@ -82,6 +82,7 @@ class _MakeScreenState extends State<MakeScreen> {
                             func: () {
                               Navigator.pop(context);
                               widget.callback();
+                              groupNameController.text = '';
                             });
                       } else {
                         CustomDialog(
