@@ -41,7 +41,7 @@ class _TimetableScreenState extends State<TimetableScreen> {
   Future<void> uploadImage(ImageSource gallery) async {
     setState(() => loading = true);
     final XFile? pickedFile =
-        await picker.pickImage(source: ImageSource.gallery);
+    await picker.pickImage(source: ImageSource.gallery);
     setState(() {
       if (pickedFile != null) {
         fileName = pickedFile.name;
@@ -51,6 +51,26 @@ class _TimetableScreenState extends State<TimetableScreen> {
       }
       loading = false;
     });
+  }
+
+  void _showBottomSheet() {
+    showModalBottomSheet<void>(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.white,
+      builder: (BuildContext context) {
+        return DraggableScrollableSheet(
+          expand: false,
+          snapSizes: [0.4, 0.8],
+          initialChildSize: 0.2,
+          minChildSize: 0.2,
+          maxChildSize: 0.8,
+          builder: (BuildContext context, ScrollController scrollController) {
+            return TimetableManager(scrollController: scrollController);
+          },
+        );
+      },
+    );
   }
 
   @override
@@ -71,8 +91,8 @@ class _TimetableScreenState extends State<TimetableScreen> {
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30)),
         actions: [
           Container(
-            width: ratio.width * 75,
-            height: ratio.height * 34,
+            width: 75,
+            height: 34,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.all(
                 Radius.circular(20),
@@ -99,7 +119,7 @@ class _TimetableScreenState extends State<TimetableScreen> {
                 children: [
                   Icon(Icons.refresh,
                       color: VinTeumColors.grey3, size: 19),
-                  SizedBox(width: ratio.width * 3),
+                  SizedBox(width: 3),
                   Text(
                     '초기화',
                     style: TextStyle(
@@ -113,117 +133,162 @@ class _TimetableScreenState extends State<TimetableScreen> {
             ),
           ),
           SizedBox(
-            width: ratio.width * 16,
+            width: 16,
           )
         ],
       ),
       body: Column(
         children: [
           SizedBox(
-            height: ratio.height * 20,
+            height: 20,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               if (selected == false)
-              Container(
-                height: ratio.height * 33,
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.all(Radius.circular(8))),
-                child: ToggleButtons(
-                    disabledColor: Colors.white,
-                    renderBorder: true,
-                    borderRadius: BorderRadius.circular(6),
-                    borderWidth: 1,
-                    borderColor: VinTeumColors.mainBlue,
-                    selectedBorderColor: VinTeumColors.mainBlue,
-                    fillColor: VinTeumColors.mainBlue,
-                    color: VinTeumColors.mainBlue,
-                    selectedColor: Colors.white,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 28),
-                        child: Text("정규",
-                            style: TextStyle(fontWeight: FontWeight.bold)),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 22),
-                        child: Text("커스텀",
-                            style: TextStyle(fontWeight: FontWeight.bold)),
-                      )
-                    ],
-                    isSelected: isSelected,
-                    onPressed: toggleSelect),
-              ),
+                Container(
+                  height: 33,
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.all(Radius.circular(8))),
+                  child: ToggleButtons(
+                      disabledColor: Colors.white,
+                      renderBorder: true,
+                      borderRadius: BorderRadius.circular(6),
+                      borderWidth: 1,
+                      borderColor: VinTeumColors.mainBlue,
+                      selectedBorderColor: VinTeumColors.mainBlue,
+                      fillColor: VinTeumColors.mainBlue,
+                      color: VinTeumColors.mainBlue,
+                      selectedColor: Colors.white,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 28),
+                          child: Text("정규",
+                              style: TextStyle(fontWeight: FontWeight.bold)),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 22),
+                          child: Text("커스텀",
+                              style: TextStyle(fontWeight: FontWeight.bold)),
+                        )
+                      ],
+                      isSelected: isSelected,
+                      onPressed: toggleSelect),
+                ),
             ],
           ),
           selected == false
               ? Padding(
-                padding: const EdgeInsets.symmetric(vertical: 20),
-                child: Container(
+            padding: const EdgeInsets.symmetric(vertical: 20),
+            child: Container(
 
-                  width: ratio.width * 358,
-                  height: ratio.height * 550,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10),
+              width: ratio.width * 358,
+              height: ratio.height * 550,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SizedBox(height: ratio.height * 20),
+                  isRegular == true
+                      ? Center(
+                      child: Text("정규 시간표를 등록 해주세요.",
+                          style: TextStyle(
+                              color: VinTeumColors.darkgrey,
+                              fontSize: 20)))
+                      : Center(
+                      child: Text("커스텀 시간표를 등록 해주세요.",
+                          style: TextStyle(
+                              color: VinTeumColors.darkgrey,
+                              fontSize: 20))),
+                ],
+              ),
+            ),
+          )
+              : Column(
+            children: [
+              SizedBox(
+                height: ratio.height * 15.57,
+              ),
+              Container(
+                width: ratio.width * 378,
+                height: ratio.height * 650,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12),
+                    color: Colors.white
+                ),
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.vertical,
+                  child: TimeTable(),
+                ),
+              ),
+            ],
+          ),
+          if (selected == false)
+            Column(
+              children: [
+                SizedBox(
+                  height: 29,
+                ),
+                CustomButton(
+                  width: 370,
+                  height: 48,
+                  text: "등록",
+                  func: () async {
+                    await uploadImage(ImageSource.gallery);
+                  },
+                  buttonCount: 1,
+                ),
+              ],
+            ),
+          if (selected)
+            Expanded(child: SizedBox()),
+          if (selected)
+            GestureDetector(
+              // 사용자의 제스처를 감지 (수직 드래그)
+              onVerticalDragUpdate: (details) {
+                // 사용자가 수직으로 드래그할 때 호출됨
+                if (details.primaryDelta! < 0) {
+                  // 사용자가 위쪽으로 드래그할때 함수 호출
+                  _showBottomSheet();
+                }
+              },
+              child: Container(
+                height: ratio.height * 60,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(30),
+                    topRight: Radius.circular(30),
                   ),
+                ),
+                child: Center(
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      SizedBox(height: ratio.height * 20),
-                      isRegular == true
-                          ? Center(
-                              child: Text("정규 시간표를 등록 해주세요.",
-                                  style: TextStyle(
-                                      color: VinTeumColors.darkgrey,
-                                      fontSize: 20)))
-                          : Center(
-                              child: Text("커스텀 시간표를 등록 해주세요.",
-                                  style: TextStyle(
-                                      color: VinTeumColors.darkgrey,
-                                      fontSize: 20))),
+                      SizedBox(
+                        height: ratio.height * 10,
+                      ),
+                      Container(
+                        height: ratio.height * 7,
+                        width: ratio.width * 65,
+                        decoration: BoxDecoration(
+                          color: VinTeumColors.mainBlue,
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(30),
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: ratio.height * 7),
+                      Text('일정 등록하기', style: TextStyle(fontSize: 16)),
                     ],
                   ),
                 ),
-              )
-              : Column(
-                children: [
-                  SizedBox(
-                    height: ratio.height * 15.57,
-                  ),
-                  Container(
-                    width: ratio.width * 358,
-                    height: ratio.height * 550,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12),
-                      color: Colors.white
-                    ),
-                    child: SingleChildScrollView(
-                      scrollDirection: Axis.vertical,
-                      child: TimeTable(),
-                    ),
-                  ),
-                ],
               ),
-          if (selected == false)
-          Column(
-            children: [
-              SizedBox(
-                height: ratio.height * 29,
-              ),
-              CustomButton(
-                width: 370,
-                height: 48,
-                text: "등록",
-                func: () async {
-                  await uploadImage(ImageSource.gallery);
-                },
-                buttonCount: 1,
-              ),
-            ],
-          )
+            ),
+
         ],
       ),
     );
@@ -240,5 +305,182 @@ class _TimetableScreenState extends State<TimetableScreen> {
     setState(() {
       isSelected = [isRegular, isCustom];
     });
+  }
+}
+
+class TimetableManager extends StatelessWidget {
+  final ScrollController scrollController;
+
+  TimetableManager({required this.scrollController});
+
+  final TextEditingController name = TextEditingController();
+  final TextEditingController date = TextEditingController();
+  final TextEditingController start_time = TextEditingController();
+  final TextEditingController end_time = TextEditingController();
+  late bool isSelect = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 600,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(30),
+          topRight: Radius.circular(30),
+        ),
+      ),
+      child: Column(
+        children: <Widget>[
+          Container(
+            width: 65,
+            height: 7,
+            decoration: BoxDecoration(
+              color: VinTeumColors.mainBlue,
+              borderRadius: BorderRadius.all(
+                Radius.circular(30),
+              ),
+            ),
+            margin: EdgeInsets.only(top: 10),
+          ),
+          Expanded(
+            child: ListView(
+              shrinkWrap: true,
+              controller: scrollController,
+              padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+              children: <Widget>[
+                Center(
+                  child: Text(
+                    '일정 등록하기',
+                    style: TextStyle(fontSize: 16),
+                  ),
+                ),
+                SizedBox(height: 10),
+                TextField(
+                  controller: name,
+                  decoration: InputDecoration(
+                    labelText: '일정 이름',
+                    labelStyle: TextStyle(
+                      color: VinTeumColors.darkgrey,
+                      fontSize: 16,
+                    ),
+                    focusedBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: VinTeumColors.mainBlue),
+                    ),
+                  ),
+                ),
+                SizedBox(height: 15.0),
+                TextField(
+                  controller: date,
+                  decoration: InputDecoration(
+                    labelText: '요일',
+                    labelStyle: TextStyle(
+                      color: VinTeumColors.darkgrey,
+                      fontSize: 16,
+                    ),
+                    focusedBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: VinTeumColors.mainBlue),
+                    ),
+                  ),
+                ),
+                SizedBox(height: 15.0),
+                TextField(
+                  controller: start_time,
+                  decoration: InputDecoration(
+                    labelText: '시작 시간',
+                    labelStyle: TextStyle(
+                      color: VinTeumColors.darkgrey,
+                      fontSize: 16,
+                    ),
+                    focusedBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: VinTeumColors.mainBlue),
+                    ),
+                  ),
+                  keyboardType: TextInputType.datetime,
+                ),
+                SizedBox(height: 15.0),
+                TextField(
+                  controller: end_time,
+                  decoration: InputDecoration(
+                    labelText: '종료 시간',
+                    labelStyle: TextStyle(
+                      color: VinTeumColors.darkgrey,
+                      fontSize: 16,
+                    ),
+                    focusedBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: VinTeumColors.mainBlue),
+                    ),
+                  ),
+                  keyboardType: TextInputType.datetime,
+                ),
+                SizedBox(height: 50.0),
+                isSelect == false
+                    ? Row(
+                  children: [
+                    Expanded(
+                      child: TextButton(
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: VinTeumColors.subBlue2,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8),
+                            )),
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        child: Text(
+                          '삭제',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: VinTeumColors.mainBlue,
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: 12),
+                    Expanded(
+                      child: TextButton(
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: VinTeumColors.mainBlue,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8),
+                            )),
+                        onPressed: () {
+                          print('일정 이름: ${name.text}');
+                          print('요일: ${date.text}');
+                          print('시작 시간: ${start_time.text}');
+                          print('종료 시간: ${end_time.text}');
+                          Navigator.pop(context);
+                        },
+                        child: Text(
+                          '등록',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                )
+                    : CustomButton(
+                    width: 150,
+                    height: 48,
+                    text: '등록',
+                    func: () {
+                      print('일정 이름: ${name.text}');
+                      print('요일: ${date.text}');
+                      print('시작 시간: ${start_time.text}');
+                      print('종료 시간: ${end_time.text}');
+                      Navigator.pop(context);
+                    },
+                    buttonCount: 1)
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
