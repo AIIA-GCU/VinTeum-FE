@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'Page/splash_Screen.dart';
+import 'package:vinteum/model/user.dart';
+import 'package:provider/provider.dart';
+import 'package:http/http.dart';
+
 late Size ratio;
 
 void main() {
