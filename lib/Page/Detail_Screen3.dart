@@ -35,44 +35,43 @@ class DetailScreen3 extends StatelessWidget {
           centerTitle: true,
           backgroundColor: VinTeumColors.background,
         ),
-        body: Column(
-          children: [
-            Container(
-              height: ratio.height * 700,
-              width: ratio.width * 350,
-              padding: EdgeInsets.all(20),
-              margin: EdgeInsets.all(30),
-              decoration: BoxDecoration(
-                color: Colors.white,
+        body: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Column(
+            children: [
+              SizedBox(height: ratio.height * 50,),
+              Container(
+                height: ratio.height * 700,
+                decoration: BoxDecoration(
+                  color: Colors.white,
 
-                  borderRadius: BorderRadius.circular(17.0)
+                    borderRadius: BorderRadius.circular(17.0)
+                  ),
+                child: Center(
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: ratio.height * 10,
+                      ),
+                      Text( "$userName님의 시간표",
+                        style: TextStyle(fontSize: 25),
+                      ),
+                      SizedBox(
+                        height: ratio.height * 600,
+                      ),
+
+                      CustomButton(text: '확인', width: 315,height: 42, func: (){Navigator.pop(context);}, buttonCount: 1)
+                    ],
+
+                  ),
+
                 ),
-              child: Center(
-                child: Column(
-                  children: [
-                    SizedBox(
-                      height: ratio.height * 10,
-                    ),
-                    Text( "$userName님의 시간표",
-                      style: TextStyle(fontSize: 25),
-                    ),
-                    SizedBox(
-                      height: ratio.height * 21,
-                    ),
-
-                    SizedBox(height: ratio.height * 500),
-
-                    CustomButton(text: '확인', width: 315,height: 42, func: (){Navigator.pop(context);}, buttonCount: 1)
-                  ],
-
                 ),
 
-              ),
-              ),
 
 
-
-          ],
+            ],
+          ),
         ),
 
       ),

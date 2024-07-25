@@ -53,10 +53,15 @@ class _DetailScreenState extends State<DetailScreen> {
                       fontSize: 16,
                     ),
                   ),
-                  GestureDetector(
-                    child: Image.asset('assets/img/download.png'),
-                    onTap: (){},
+                  IconButton(onPressed: (){},
+                      icon: Icon(Icons.copy,
+                      color: VinTeumColors.grey,
                   ),
+                  ),
+                  // GestureDetector(
+                  //   child: Image.asset('assets/img/download.png'),
+                  //   onTap: (){},
+                  // ),
 
                 ],
               ),
@@ -69,12 +74,12 @@ class _DetailScreenState extends State<DetailScreen> {
                     child: Text(
                       '공통 시간',
                       style: TextStyle(
-                          fontSize: 23,
+                          fontSize: 26,
                           fontWeight: FontWeight.bold,
                           color: VinTeumColors.mainBlue),
                     ),
                   ),
-                  SizedBox(width: ratio.width * 125),
+                  SizedBox(width: ratio.width * 110),
                   GestureDetector(
                     onTap: () {
                       Navigator.push(
@@ -115,12 +120,16 @@ class _DetailScreenState extends State<DetailScreen> {
                 height: 20,
               ),
               Container(
-                height: ratio.height * 527,
+                height: ratio.height * 600,
                 // width: ratio.width * 357,
-                decoration: BoxDecoration(color: Colors.white),
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(12),
+                ),
+
               ),
               SizedBox(
-                height: ratio.height * 30,
+                height: ratio.height * 20,
               ),
               CustomButton(text: "그룹 삭제",
                   width: 315,
