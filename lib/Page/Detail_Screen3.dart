@@ -29,7 +29,6 @@ class DetailScreen3 extends StatelessWidget {
           ), //타이틀 -> 폰트 바꾸기
           titleTextStyle: TextStyle(
               fontSize: 30,
-              //fontWeight: FontWeight.bold,
               color: Colors.black
           ),
           centerTitle: true,
@@ -39,9 +38,9 @@ class DetailScreen3 extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
             children: [
-              SizedBox(height: ratio.height * 50,),
+              SizedBox(height: ratio.height * 20,),
               Container(
-                height: ratio.height * 700,
+                height: ratio.height * 730,
                 decoration: BoxDecoration(
                   color: Colors.white,
 
@@ -57,9 +56,11 @@ class DetailScreen3 extends StatelessWidget {
                         style: TextStyle(fontSize: 25),
                       ),
                       SizedBox(
+                        height: ratio.height * 20,
+                      ),
+                      Container(
                         height: ratio.height * 600,
                       ),
-
                       CustomButton(text: '확인', width: 315,height: 42, func: (){Navigator.pop(context);}, buttonCount: 1)
                     ],
 
