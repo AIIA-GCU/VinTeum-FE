@@ -2,6 +2,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:vinteum/Common/color.dart';
 import 'package:vinteum/main.dart';
+import 'package:vinteum/widget/TImetable_Manager.dart';
 
 class TimeTable extends StatefulWidget {
   const TimeTable({super.key});
@@ -16,25 +17,41 @@ class _TimeTableState extends State<TimeTable> {
   double firstHeight = 20;
   double boxSize = 52; //한칸의 크기
 
+  void _showBottomSheet() {
+    showModalBottomSheet<void>(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.white,
+      builder: (BuildContext context) {
+        return DraggableScrollableSheet(
+          expand: false,
+          initialChildSize: 0.8,
+          minChildSize: 0.8,
+          maxChildSize: 0.8,
+          builder: (BuildContext context, ScrollController scrollController) {
+            return TimetableManager(scrollController: scrollController);
+          },
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-        child: Container(
-          height: ratio.height * 768,
-          decoration: BoxDecoration(
-            border: Border.all(color: VinTeumColors.darkgrey),
-            borderRadius: BorderRadius.circular(12),
-            color: Colors.white,
-          ),
-          child: Row(
-            children: [
-              timeColumn(),
-              for (int i = 0; i < week.length; i++) ...dayColumn(i),
-            ],
-          ),
-        ),
-      );
+    return Container(
+      height: ratio.height * 768,
+      decoration: BoxDecoration(
+        border: Border.all(color: VinTeumColors.darkgrey),
+        borderRadius: BorderRadius.circular(12),
+        color: Colors.white,
+      ),
+      child: Row(
+        children: [
+          timeColumn(),
+          for (int i = 0; i < week.length; i++) ...dayColumn(i),
+        ],
+      ),
+    );
   }
 
   Widget timeColumn() {
@@ -45,15 +62,15 @@ class _TimeTableState extends State<TimeTable> {
           SizedBox(height: firstHeight),
           ...List.generate(
             columnLength,
-                (index) => index % 2 == 0
+            (index) => index % 2 == 0
                 ? const Divider(color: Colors.grey, height: 0)
                 : SizedBox(
-              height: boxSize,
-              child: Text(
-                '${index ~/ 2 + 9}', // 9시부터 시작
-                style: const TextStyle(fontSize: 10),
-              ),
-            ),
+                    height: boxSize,
+                    child: Text(
+                      '${index ~/ 2 + 9}', // 9시부터 시작
+                      style: const TextStyle(fontSize: 10),
+                    ),
+                  ),
           ),
         ],
       ),
@@ -77,11 +94,7 @@ class _TimeTableState extends State<TimeTable> {
               left: 0,
               child: GestureDetector(
                 onTap: () {
-                  setState(() {
-                    showModalBottomSheet(context: context, builder: (context) {
-                      return Container();
-                    });
-                  });
+                  _showBottomSheet();
                 },
                 child: Container(
                   width: MediaQuery.of(context).size.width / 7,
@@ -125,7 +138,7 @@ class _TimeTableState extends State<TimeTable> {
                 ),
                 ...List.generate(
                   columnLength.toInt(),
-                      (index) => index % 2 == 0
+                  (index) => index % 2 == 0
                       ? const Divider(color: Colors.grey, height: 0)
                       : SizedBox(height: boxSize, child: Container()),
                 ),
@@ -143,9 +156,9 @@ class ColorGenerator {
   static Random random = Random();
 
   static Color getRandomColor() {
-    int red = random.nextInt(90) + 120;    // 120 ~ 210
-    int green = random.nextInt(30) + 160;  // 160 ~ 190
-    int blue = random.nextInt(15) + 240;   // 240 ~ 255
+    int red = random.nextInt(90) + 120; // 120 ~ 210
+    int green = random.nextInt(30) + 160; // 160 ~ 190
+    int blue = random.nextInt(15) + 240; // 240 ~ 255
     return Color.fromARGB(255, red, green, blue);
   }
 }
