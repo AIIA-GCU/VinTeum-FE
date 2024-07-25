@@ -45,23 +45,26 @@ class _DetailScreenState extends State<DetailScreen> {
             children: [
               SizedBox(height: ratio.height * 20),
               Row(
-                mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Text("참여 코드 복사",
-                    style: TextStyle(
-                      color: VinTeumColors.darkgrey,
-                      fontSize: 16,
+                  SizedBox(
+                    width: ratio.width * 242,
+                  ),
+                  GestureDetector(
+                    onTap: (){
+
+                    },
+                    child: Row(
+                      children: [
+                        Text("참여 코드 복사",
+                          style: TextStyle(
+                            color: VinTeumColors.darkgrey,
+                            fontSize: 16,
+                          ),
+                        ),
+                        Image.asset('assets/img/download.png'),
+                      ],
                     ),
                   ),
-                  IconButton(onPressed: (){},
-                      icon: Icon(Icons.copy,
-                      color: VinTeumColors.grey,
-                  ),
-                  ),
-                  // GestureDetector(
-                  //   child: Image.asset('assets/img/download.png'),
-                  //   onTap: (){},
-                  // ),
 
                 ],
               ),
@@ -107,13 +110,6 @@ class _DetailScreenState extends State<DetailScreen> {
                       ),
                     ),
                   ),
-
-                  // Image.asset(
-                  //   'assets/img/ex_img.png',
-                  //   width: ratio.width * 319,
-                  //   height: ratio.height * 518,
-                  //   fit: BoxFit.cover,
-                  // ),
                 ],
               ),
               SizedBox(
@@ -135,7 +131,7 @@ class _DetailScreenState extends State<DetailScreen> {
                   width: 315,
                   height: 42,
                   func: () {
-                CustomDialog(context: context, title: "그룹 삭제", dialogContent: "그룹을 삭제하시겠습니까?", buttonText: "", buttonCount: 2, func: () {});
+                    CustomDialog(context: context, title: "그룹 삭제", dialogContent: "그룹을 삭제하시겠습니까?", buttonText: "", buttonCount: 2, func: () {});
                   },
                   buttonCount: 1)
             ],
