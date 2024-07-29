@@ -17,7 +17,8 @@ class _TimeTableState extends State<TimeTable> {
   double firstHeight = 20;
   double boxSize = 52; //한칸의 크기
 
-  void _showBottomSheet() {
+  void _showBottomSheet(
+      {String? className, int? startTime, int? endTime, String? datTime}) {
     showModalBottomSheet<void>(
       context: context,
       isScrollControlled: true,
@@ -29,7 +30,14 @@ class _TimeTableState extends State<TimeTable> {
           minChildSize: 0.8,
           maxChildSize: 0.8,
           builder: (BuildContext context, ScrollController scrollController) {
-            return TimetableManager(scrollController: scrollController);
+            return TimetableManager(
+              scrollController: scrollController,
+              SuJung: true,
+              className: className,
+              startTime: startTime,
+              endTime: endTime,
+              dayTime: datTime,
+            );
           },
         );
       },
@@ -85,8 +93,10 @@ class _TimeTableState extends State<TimeTable> {
     for (var lecture in selectedLectures) {
       for (int i = 0; i < lecture.day.length; i++) {
         if (lecture.day[i] == currentDay) {
-          double top = firstHeight + (lecture.start[i] - 9) * boxSize; // 강의의 시작 시간에 따라 컨테이너의 위치를 계산
-          double height = (lecture.end[i] - lecture.start[i]) * boxSize; // 강의의 시작 시간과 종료 시간의 차이에 따라 높이를 계산
+          double top = firstHeight +
+              (lecture.start[i] - 9) * boxSize; // 강의의 시작 시간에 따라 컨테이너의 위치를 계산
+          double height = (lecture.end[i] - lecture.start[i]) *
+              boxSize; // 강의의 시작 시간과 종료 시간의 차이에 따라 높이를 계산
 
           lecturesCurrentDay.add(
             Positioned(
@@ -94,7 +104,11 @@ class _TimeTableState extends State<TimeTable> {
               left: 0,
               child: GestureDetector(
                 onTap: () {
-                  _showBottomSheet();
+                  _showBottomSheet(
+                      className: lecture.lname,
+                      startTime: lecture.start.first,
+                      endTime: lecture.end.first,
+                      datTime: lecture.day.first);
                 },
                 child: Container(
                   width: MediaQuery.of(context).size.width / 7,

@@ -4,16 +4,26 @@ import 'package:vinteum/widget/custom_button.dart';
 
 class TimetableManager extends StatelessWidget {
   final ScrollController scrollController;
+  final bool SuJung;
 
-  TimetableManager({required this.scrollController});
+  TimetableManager({
+    required this.scrollController,
+    required this.SuJung,
+    String? className,
+    int? startTime,
+    int? endTime,
+    String? dayTime,
+  })  : name = TextEditingController(text: SuJung ? className : ''),
+        date = TextEditingController(text: SuJung ? dayTime : ''),
+        start_time = TextEditingController(text: SuJung ? startTime?.toString() : ''),
+        end_time = TextEditingController(text: SuJung ? endTime?.toString() : '');
 
-  final TextEditingController name = TextEditingController();
-  final TextEditingController date = TextEditingController();
-  final TextEditingController start_time = TextEditingController();
-  final TextEditingController end_time = TextEditingController();
-  late bool isSelect = false;
+  final TextEditingController name;
+  final TextEditingController date;
+  final TextEditingController start_time;
+  final TextEditingController end_time;
 
-
+  final bool isSelect = false;
 
   @override
   Widget build(BuildContext context) {

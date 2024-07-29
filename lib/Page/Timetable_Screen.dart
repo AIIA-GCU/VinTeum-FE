@@ -54,7 +54,7 @@ class _TimetableScreenState extends State<TimetableScreen> {
     });
   }
 
-  void _showBottomSheet() {
+  void _showBottomSheet(){
     showModalBottomSheet<void>(
       context: context,
       isScrollControlled: true,
@@ -67,7 +67,7 @@ class _TimetableScreenState extends State<TimetableScreen> {
           minChildSize: 0.2,
           maxChildSize: 0.8,
           builder: (BuildContext context, ScrollController scrollController) {
-            return TimetableManager(scrollController: scrollController);
+            return TimetableManager(scrollController: scrollController, SuJung: false,);
           },
         );
       },
