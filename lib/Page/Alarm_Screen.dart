@@ -7,7 +7,9 @@ class Alarm_Screen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: VinTeumColors.background,
       appBar: AppBar(
+        backgroundColor: VinTeumColors.background,
         leading: GestureDetector(
             onTap: (){
               Navigator.pop(context);
