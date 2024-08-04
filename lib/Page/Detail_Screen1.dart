@@ -7,10 +7,13 @@ import 'package:vinteum/widget/custom_dialog.dart';
 import 'package:vinteum/Page/Detail_Screen2.dart';
 import 'package:vinteum/main.dart';
 import 'package:flutter/services.dart';
+import 'package:vinteum/widget/freetime_table.dart';
 
 class DetailScreen extends StatefulWidget {
   const DetailScreen({super.key, required this.number});
+
   final int? number;
+
   @override
   State<DetailScreen> createState() => _DetailScreenState();
 }
@@ -22,6 +25,7 @@ class _DetailScreenState extends State<DetailScreen> {
       child: Scaffold(
         backgroundColor: VinTeumColors.background,
         appBar: AppBar(
+          scrolledUnderElevation: 0,
           leading: IconButton(
             onPressed: () {
               Navigator.pop(context);
@@ -31,8 +35,7 @@ class _DetailScreenState extends State<DetailScreen> {
               color: VinTeumColors.grey,
             ),
           ),
-          title: Text(
-              "그룹명"),
+          title: Text("그룹명"),
           //타이틀 -> 폰트 바꾸기
           titleTextStyle: TextStyle(
               fontSize: 30, fontWeight: FontWeight.bold, color: Colors.black),
@@ -50,7 +53,7 @@ class _DetailScreenState extends State<DetailScreen> {
                     width: ratio.width * 242,
                   ),
                   GestureDetector(
-                    onTap: (){
+                    onTap: () {
                       String EnterKey = "adadadad";
                       Clipboard.setData(ClipboardData(text: EnterKey));
                       Fluttertoast.showToast(
@@ -60,12 +63,12 @@ class _DetailScreenState extends State<DetailScreen> {
                           timeInSecForIosWeb: 1,
                           backgroundColor: VinTeumColors.grey,
                           textColor: Colors.white,
-                          fontSize: 16.0
-                      );
+                          fontSize: 16.0);
                     },
                     child: Row(
                       children: [
-                        Text("참여 코드 복사",
+                        Text(
+                          "참여 코드 복사",
                           style: TextStyle(
                             color: VinTeumColors.darkgrey,
                             fontSize: 16,
@@ -75,7 +78,6 @@ class _DetailScreenState extends State<DetailScreen> {
                       ],
                     ),
                   ),
-
                 ],
               ),
               Row(
@@ -97,7 +99,8 @@ class _DetailScreenState extends State<DetailScreen> {
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => DetailScreen2()),
+                        MaterialPageRoute(
+                            builder: (context) => DetailScreen2()),
                       );
                     },
                     child: Container(
@@ -129,19 +132,29 @@ class _DetailScreenState extends State<DetailScreen> {
                 height: ratio.height * 600,
                 // width: ratio.width * 357,
                 decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(12),
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(12),
                 ),
-
+                child: SingleChildScrollView(
+                  padding: EdgeInsets.all(10),
+                    scrollDirection: Axis.vertical,
+                    child: FreeTimeTable()),
               ),
               SizedBox(
                 height: ratio.height * 20,
               ),
-              CustomButton(text: "그룹 삭제",
+              CustomButton(
+                  text: "그룹 삭제",
                   width: 315,
                   height: 42,
                   func: () {
-                    CustomDialog(context: context, title: "그룹 삭제", dialogContent: "그룹을 삭제하시겠습니까?", buttonText: "", buttonCount: 2, func: () {});
+                    CustomDialog(
+                        context: context,
+                        title: "그룹 삭제",
+                        dialogContent: "그룹을 삭제하시겠습니까?",
+                        buttonText: "",
+                        buttonCount: 2,
+                        func: () {});
                   },
                   buttonCount: 1)
             ],
