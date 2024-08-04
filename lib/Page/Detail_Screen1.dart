@@ -1,16 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:vinteum/Common/color.dart';
 import 'package:vinteum/widget/custom_button.dart';
 import 'package:vinteum/widget/custom_dialog.dart';
 import 'package:vinteum/Page/Detail_Screen2.dart';
 import 'package:vinteum/main.dart';
-
+import 'package:flutter/services.dart';
 
 class DetailScreen extends StatefulWidget {
   const DetailScreen({super.key, required this.number});
   final int? number;
-
   @override
   State<DetailScreen> createState() => _DetailScreenState();
 }
@@ -51,7 +51,17 @@ class _DetailScreenState extends State<DetailScreen> {
                   ),
                   GestureDetector(
                     onTap: (){
-
+                      String EnterKey = "adadadad";
+                      Clipboard.setData(ClipboardData(text: EnterKey));
+                      Fluttertoast.showToast(
+                          msg: "복사되었습니다.",
+                          toastLength: Toast.LENGTH_SHORT,
+                          gravity: ToastGravity.BOTTOM,
+                          timeInSecForIosWeb: 1,
+                          backgroundColor: VinTeumColors.grey,
+                          textColor: Colors.white,
+                          fontSize: 16.0
+                      );
                     },
                     child: Row(
                       children: [
