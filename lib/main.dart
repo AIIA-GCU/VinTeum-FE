@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'Page/splash_Screen.dart';
+import 'Server/controller.dart';
+import 'Server/session.dart';
 late Size ratio;
 
 void main() {
@@ -13,7 +16,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ratio = Size(MediaQuery.sizeOf(context).width / 412, MediaQuery.sizeOf(context).height / 892);
-    return MaterialApp(
+    return MultiProvider(
+        providers: [
+          ChangeNotifierProvider(create: (_) => AuthProvider()),
+          ChangeNotifierProvider(create: (_) => SessionProvider()),
+        ],
+        child: MaterialApp(
         theme: ThemeData(
             fontFamily: "Pretendard",
           splashColor: Colors.transparent,
@@ -22,6 +30,7 @@ class MyApp extends StatelessWidget {
 
         debugShowCheckedModeBanner: false,
         home: SplashScreen()
+        )
     );
   }
 }
