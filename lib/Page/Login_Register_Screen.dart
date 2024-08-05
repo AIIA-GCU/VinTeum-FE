@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:vinteum/Page/Help_screen.dart';
-import 'package:vinteum/Page/Home_Screen.dart';
+import 'package:provider/provider.dart';
 import 'package:vinteum/widget/custom_button.dart';
 import 'package:vinteum/main.dart';
 import 'package:vinteum/widget/root_tab.dart';
-import 'package:vinteum/widget/time_table.dart';
+import 'package:vinteum/Server/controller.dart'; // LoginRequest 및 loginUser 함수 가져오기
 
 class LoginSignupScreen extends StatefulWidget {
   const LoginSignupScreen({super.key});
@@ -22,8 +20,18 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
   String userPassword = '';
   String userPassword1 = '';
   final TextEditingController passwordController = TextEditingController();
-  final TextEditingController passwordVerifyingController =
-  TextEditingController();
+  final TextEditingController passwordVerifyingController = TextEditingController();
+
+  void _tryLogin() {
+    if (_formKey.currentState!.validate()) {
+      _formKey.currentState!.save();
+      Provider.of<AuthProvider>(context, listen: false).login(userID, userPassword).then((_) {
+        Navigator.push(context, MaterialPageRoute(builder: (context) => RootTab()));
+      }).catchError((error) {
+        print('Login failed: $error');
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,8 +52,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                     child: Image.asset('assets/logo/logo.png'))),
             Positioned(
                 top: ratio.height * 240,
-                child: Text('VinTeum', style: TextStyle(fontSize: 48, fontFamily: 'Roboto',fontStyle: FontStyle.italic, fontWeight: FontWeight.w900),)),
-
+                child: Text('VinTeum', style: TextStyle(fontSize: 48, fontFamily: 'Roboto', fontStyle: FontStyle.italic, fontWeight: FontWeight.w900))),
             AnimatedPositioned(
               duration: Duration(milliseconds: 500),
               curve: Curves.easeIn,
@@ -88,9 +95,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 14,
-                                      color: !isSignupScreen
-                                          ? Colors.black
-                                          : Colors.grey),
+                                      color: !isSignupScreen ? Colors.black : Colors.grey),
                                 ),
                               ],
                             ),
@@ -108,9 +113,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 14,
-                                      color: isSignupScreen
-                                          ? Colors.black
-                                          : Colors.grey),
+                                      color: isSignupScreen ? Colors.black : Colors.grey),
                                 ),
                               ],
                             ),
@@ -150,23 +153,19 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                         size: 24,
                                       ),
                                       enabledBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                            color: Colors.grey),
+                                        borderSide: BorderSide(color: Colors.grey),
                                         borderRadius: BorderRadius.all(
                                           Radius.circular(8),
                                         ),
                                       ),
                                       focusedBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                            color: Colors.grey),
+                                        borderSide: BorderSide(color: Colors.grey),
                                         borderRadius: BorderRadius.all(
                                           Radius.circular(8),
                                         ),
                                       ),
                                       hintText: '이름을 입력해주세요.',
-                                      hintStyle: TextStyle(
-                                          fontSize: 14,
-                                          color: Colors.grey),
+                                      hintStyle: TextStyle(fontSize: 14, color: Colors.grey),
                                       contentPadding: EdgeInsets.all(10),
                                     ),
                                   ),
@@ -197,23 +196,19 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                         size: 24,
                                       ),
                                       enabledBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                            color: Colors.grey),
+                                        borderSide: BorderSide(color: Colors.grey),
                                         borderRadius: BorderRadius.all(
                                           Radius.circular(8),
                                         ),
                                       ),
                                       focusedBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                            color: Colors.grey),
+                                        borderSide: BorderSide(color: Colors.grey),
                                         borderRadius: BorderRadius.all(
                                           Radius.circular(8),
                                         ),
                                       ),
                                       hintText: '아이디를 입력해주세요.',
-                                      hintStyle: TextStyle(
-                                          fontSize: 14,
-                                          color: Colors.grey),
+                                      hintStyle: TextStyle(fontSize: 14, color: Colors.grey),
                                       contentPadding: EdgeInsets.all(10),
                                     ),
                                   ),
@@ -246,23 +241,19 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                         size: 24,
                                       ),
                                       enabledBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                            color: Colors.grey),
+                                        borderSide: BorderSide(color: Colors.grey),
                                         borderRadius: BorderRadius.all(
                                           Radius.circular(8),
                                         ),
                                       ),
                                       focusedBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                            color: Colors.grey),
+                                        borderSide: BorderSide(color: Colors.grey),
                                         borderRadius: BorderRadius.all(
                                           Radius.circular(8),
                                         ),
                                       ),
                                       hintText: '비밀번호를 입력해주세요.',
-                                      hintStyle: TextStyle(
-                                          fontSize: 14,
-                                          color: Colors.grey),
+                                      hintStyle: TextStyle(fontSize: 14, color: Colors.grey),
                                       contentPadding: EdgeInsets.all(10),
                                     ),
                                   ),
@@ -277,8 +268,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                     controller: passwordVerifyingController,
                                     key: ValueKey(4),
                                     validator: (value) {
-                                      if (passwordController.text !=
-                                          passwordVerifyingController.text) {
+                                      if (passwordController.text != passwordVerifyingController.text) {
                                         return '비밀번호가 다릅니다.';
                                       }
                                       return null;
@@ -296,23 +286,19 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                         size: 24,
                                       ),
                                       enabledBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                            color: Colors.grey),
+                                        borderSide: BorderSide(color: Colors.grey),
                                         borderRadius: BorderRadius.all(
                                           Radius.circular(8),
                                         ),
                                       ),
                                       focusedBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                            color: Colors.grey),
+                                        borderSide: BorderSide(color: Colors.grey),
                                         borderRadius: BorderRadius.all(
                                           Radius.circular(8),
                                         ),
                                       ),
                                       hintText: '비밀번호를 한번 더 입력해주세요.',
-                                      hintStyle: TextStyle(
-                                          fontSize: 14,
-                                          color: Colors.grey),
+                                      hintStyle: TextStyle(fontSize: 14, color: Colors.grey),
                                       contentPadding: EdgeInsets.all(10),
                                     ),
                                   ),
@@ -320,14 +306,14 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                 SizedBox(
                                   height: ratio.height * 13,
                                 ),
-
                                 CustomButton(
                                     text: "회원가입",
                                     width: 150,
                                     height: 48,
-                                    func: (){Navigator.push(context, MaterialPageRoute(builder: (context) => RootTab()));},
+                                    func: () {
+                                      Navigator.push(context, MaterialPageRoute(builder: (context) => RootTab()));
+                                    },
                                     buttonCount: 1),
-
                               ],
                             ),
                           ),
@@ -364,23 +350,19 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                         size: 24,
                                       ),
                                       enabledBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                            color: Colors.grey),
+                                        borderSide: BorderSide(color: Colors.grey),
                                         borderRadius: BorderRadius.all(
                                           Radius.circular(8),
                                         ),
                                       ),
                                       focusedBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                            color: Colors.grey),
+                                        borderSide: BorderSide(color: Colors.grey),
                                         borderRadius: BorderRadius.all(
                                           Radius.circular(8),
                                         ),
                                       ),
                                       hintText: '아이디를 입력해주세요.',
-                                      hintStyle: TextStyle(
-                                          fontSize: 14,
-                                          color: Colors.grey),
+                                      hintStyle: TextStyle(fontSize: 14, color: Colors.grey),
                                       contentPadding: EdgeInsets.all(10),
                                     ),
                                   ),
@@ -412,23 +394,19 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                         size: 24,
                                       ),
                                       enabledBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                            color: Colors.grey),
+                                        borderSide: BorderSide(color: Colors.grey),
                                         borderRadius: BorderRadius.all(
                                           Radius.circular(8),
                                         ),
                                       ),
                                       focusedBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                            color: Colors.grey),
+                                        borderSide: BorderSide(color: Colors.grey),
                                         borderRadius: BorderRadius.all(
                                           Radius.circular(8),
                                         ),
                                       ),
                                       hintText: '비밀번호를 입력해주세요',
-                                      hintStyle: TextStyle(
-                                          fontSize: 14,
-                                          color: Colors.grey),
+                                      hintStyle: TextStyle(fontSize: 14, color: Colors.grey),
                                       contentPadding: EdgeInsets.all(10),
                                     ),
                                   ),
@@ -440,7 +418,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                     text: "로그인",
                                     width: 150,
                                     height: 48,
-                                    func: (){Navigator.push(context, MaterialPageRoute(builder: (context) => RootTab()));},
+                                    func: _tryLogin,
                                     buttonCount: 1),
                               ],
                             ),
