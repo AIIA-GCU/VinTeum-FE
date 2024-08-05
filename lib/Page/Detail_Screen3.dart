@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:vinteum/Common/color.dart';
 import 'package:vinteum/widget/custom_button.dart';
 import 'package:vinteum/main.dart';
+import 'package:vinteum/widget/time_table.dart';
 
 
 class DetailScreen3 extends StatelessWidget {
@@ -14,6 +15,7 @@ class DetailScreen3 extends StatelessWidget {
       child: Scaffold(
         backgroundColor: VinTeumColors.background,
         appBar: AppBar(
+          scrolledUnderElevation: 0,
           leading:IconButton(onPressed: (){
             Navigator.pop(context);
           },
@@ -60,6 +62,14 @@ class DetailScreen3 extends StatelessWidget {
                       ),
                       Container(
                         height: ratio.height * 600,
+                        child:SingleChildScrollView(
+                          padding: EdgeInsets.all(10),
+                          scrollDirection: Axis.vertical,
+                          child: TimeTable(),
+                        ),
+                      ),
+                      SizedBox(
+                        height: ratio.height * 10,
                       ),
                       CustomButton(text: '확인', width: 315,height: 42, func: (){Navigator.pop(context);}, buttonCount: 1)
                     ],
