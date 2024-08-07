@@ -1,4 +1,7 @@
+import 'dart:ffi';
 import 'package:flutter/foundation.dart';
+import 'package:vinteum/main.dart';
+import 'package:vinteum/provider/user_provider.dart';
 
 class UserDTO {
   final int userId;

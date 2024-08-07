@@ -1,9 +1,22 @@
 import 'package:flutter/material.dart';
 import 'Page/splash_Screen.dart';
+import 'package:provider/provider.dart';
+import 'package:vinteum/provider/user_provider.dart';
+import 'package:vinteum/provider/team_provider.dart';
+
 late Size ratio;
 
+
 void main() {
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => UserProvider()),
+        ChangeNotifierProvider(create: (_) => TeamProvider()),
+      ],
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {

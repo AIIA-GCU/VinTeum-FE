@@ -1,6 +1,7 @@
 import 'dart:ffi';
-
+import 'package:vinteum/main.dart';
 import 'package:flutter/foundation.dart';
+import 'package:vinteum/provider/team_provider.dart';
 
 class TeamDTO {
   final Long teamId;
