@@ -6,7 +6,6 @@ class UserDTO {
   final String username;
   final String password;
   final String nickname;
-  final String userSchedule;
   final List<String> authorities;
 
   UserDTO({
@@ -14,7 +13,6 @@ class UserDTO {
     required this.username,
     required this.password,
     required this.nickname,
-    required this.userSchedule,
     required this.authorities,
   });
 
@@ -24,7 +22,6 @@ class UserDTO {
       username: json['username'],
       password: json['password'],
       nickname: json['nickname'],
-      userSchedule: json['userSchedule'],
       authorities: List<String>.from(json['authorities']),
     );
   }
@@ -35,7 +32,6 @@ class UserDTO {
       'username': username,
       'password': password,
       'nickname': nickname,
-      'userSchedule': userSchedule,
       'authorities': authorities,
     };
   }

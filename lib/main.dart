@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'Page/splash_Screen.dart';
-import 'Server/controller.dart';
+import 'Server/provider.dart';
 import 'Server/session.dart';
 late Size ratio;
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 
@@ -18,7 +19,8 @@ class MyApp extends StatelessWidget {
     ratio = Size(MediaQuery.sizeOf(context).width / 412, MediaQuery.sizeOf(context).height / 892);
     return MultiProvider(
         providers: [
-          ChangeNotifierProvider(create: (_) => AuthProvider()),
+          ChangeNotifierProvider(create: (_) => LoginProvider()),
+          ChangeNotifierProvider(create: (_) => RegisterProvider()),
           ChangeNotifierProvider(create: (_) => SessionProvider()),
         ],
         child: MaterialApp(

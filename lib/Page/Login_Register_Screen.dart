@@ -3,7 +3,9 @@ import 'package:provider/provider.dart';
 import 'package:vinteum/widget/custom_button.dart';
 import 'package:vinteum/main.dart';
 import 'package:vinteum/widget/root_tab.dart';
-import 'package:vinteum/Server/controller.dart'; // LoginRequest 및 loginUser 함수 가져오기
+import 'package:vinteum/Server/provider.dart';
+
+import '../Server/controller.dart'; // LoginRequest 및 loginUser 함수 가져오기
 
 class LoginSignupScreen extends StatefulWidget {
   const LoginSignupScreen({super.key});
@@ -21,17 +23,8 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
   String userPassword1 = '';
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController passwordVerifyingController = TextEditingController();
-
-  void _tryLogin() {
-    if (_formKey.currentState!.validate()) {
-      _formKey.currentState!.save();
-      Provider.of<AuthProvider>(context, listen: false).login(userID, userPassword).then((_) {
-        Navigator.push(context, MaterialPageRoute(builder: (context) => RootTab()));
-      }).catchError((error) {
-        print('Login failed: $error');
-      });
-    }
-  }
+  final TextEditingController UserIDController = TextEditingController();
+  final TextEditingController UserNameController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -132,6 +125,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                 SizedBox(
                                   width: ratio.width * 300,
                                   child: TextFormField(
+                                    controller: UserNameController,
                                     keyboardType: TextInputType.name,
                                     key: ValueKey(1),
                                     validator: (value) {
@@ -177,6 +171,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                   width: ratio.width * 300,
                                   child: TextFormField(
                                     key: ValueKey(2),
+                                    controller: UserIDController,
                                     validator: (value) {
                                       if (value!.isEmpty || value.length < 9) {
                                         return '형식에 맞지 않습니다.';
@@ -311,7 +306,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                     width: 150,
                                     height: 48,
                                     func: () {
-                                      Navigator.push(context, MaterialPageRoute(builder: (context) => RootTab()));
+                                      RestAPI.tryRegister(password: passwordController.text, username: UserIDController.text, nickname: UserNameController.text);
                                     },
                                     buttonCount: 1),
                               ],
@@ -418,7 +413,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                     text: "로그인",
                                     width: 150,
                                     height: 48,
-                                    func: _tryLogin,
+                                    func: (){},
                                     buttonCount: 1),
                               ],
                             ),
