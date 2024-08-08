@@ -48,7 +48,7 @@ class _FreeTimeTableState extends State<FreeTimeTable> {
               height: boxSize,
               child: Text(
                 '${index ~/ 2 + 9}', // 9시부터 시작
-                style: const TextStyle(fontSize: 10),
+                style: const TextStyle(fontSize: 8),
               ),
             ),
           ),

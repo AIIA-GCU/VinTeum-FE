@@ -77,7 +77,7 @@ class _TimeTableState extends State<TimeTable> {
                     height: boxSize,
                     child: Text(
                       '${index ~/ 2 + 9}', // 9시부터 시작
-                      style: const TextStyle(fontSize: 10),
+                      style: const TextStyle(fontSize: 8),
                     ),
                   ),
           ),
@@ -146,16 +146,16 @@ class _TimeTableState extends State<TimeTable> {
             Column(
               children: [
                 SizedBox(
-                  height: 20,
+                  height: firstHeight,
                   child: Text(
                     '${week[index]}',
                   ),
                 ),
                 ...List.generate(
-                  columnLength.toInt(),
+                  columnLength,
                   (index) => index % 2 == 0
                       ? const Divider(color: Colors.grey, height: 0)
-                      : SizedBox(height: boxSize, child: Container()),
+                      : SizedBox(height: boxSize),
                 ),
               ],
             ),
@@ -188,7 +188,7 @@ class Lecture {
 }
 
 List<Lecture> selectedLectures = [
-  Lecture(['토'], [13], [17], '알바'), //요일, 시작, 종료, 이름
+  Lecture(['토'], [13], [17], 'ㅇ'), //요일, 시작, 종료, 이름
   Lecture(['화'], [15], [19], '알바'),
   Lecture(['목'], [12], [21], '알바'),
   Lecture(['화'], [9], [10], '알바'),
