@@ -35,8 +35,7 @@ class APIRequest {
   set setPath(String val) => _path = val;
 
 
-  Future<dynamic> send(HTTPMethod method,
-      {Map<String, dynamic>? params}) async {
+  Future<dynamic> send(HTTPMethod method, {Map<String, dynamic>? params}) async {
     try {
       final uri = Uri.parse(_baseUrl + _path);
       http.Request request;
@@ -56,6 +55,22 @@ class APIRequest {
           break;
       }
 
+      // try {
+      //   final sessionToken = await session.get();
+      //   setCookies = {_sessionCookieName: sessionToken};
+      // } catch (_) {
+      //   setCookies = {};
+      // }
+
+      // final info = await PackageInfo.fromPlatform();
+
+      final headers = {
+        'User-Agent': 'VinTeum/1.0.0',
+        'Content-Type': 'application/json; charset=UTF-8',
+        // 'Cookie': _encodeCookie(),
+      };
+
+      request.headers.addAll(headers);
 
       if (params != null) request.body = jsonEncode(params);
 
@@ -63,7 +78,7 @@ class APIRequest {
           .send(request).timeout(const Duration(seconds: 15));
       final response = await http.Response.fromStream(httpReturned);
 
-      debugPrint("[api] path : ~/$_path");
+      debugPrint("[api] path : ~$_path");
 
       if (httpReturned.statusCode != 500) {
         dynamic jsonResponse = response.bodyBytes.isNotEmpty

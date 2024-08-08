@@ -306,9 +306,14 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                     width: 150,
                                     height: 48,
                                     func: () {
-                                      RestAPI.tryRegister(password: passwordController.text, username: UserIDController.text, nickname: UserNameController.text);
+                                      RestAPI.tryRegister(
+                                          password: passwordController.text,
+                                          username: UserIDController.text,
+                                          nickname: UserNameController.text
+                                      );
                                     },
-                                    buttonCount: 1),
+                                    buttonCount: 1
+                                ),
                               ],
                             ),
                           ),
