@@ -19,7 +19,7 @@ class _TimeTableState extends State<TimeTable> {
 
 
   void _showBottomSheet(
-      {String? className, int? startTime, int? endTime, String? datTime}) {
+      {String? className, int? startTime, int? endTime, String? dayTime}) {
     showModalBottomSheet<void>(
       context: context,
       isScrollControlled: true,
@@ -37,7 +37,7 @@ class _TimeTableState extends State<TimeTable> {
               className: className,
               startTime: startTime,
               endTime: endTime,
-              dayTime: datTime,
+              dayTime: dayTime,
             );
           },
         );
@@ -109,7 +109,7 @@ class _TimeTableState extends State<TimeTable> {
                       className: lecture.lname,
                       startTime: lecture.start.first,
                       endTime: lecture.end.first,
-                      datTime: lecture.day.first);
+                      dayTime: lecture.day.first);
                 },
                 child: Container(
                   width: MediaQuery.of(context).size.width / 7,
