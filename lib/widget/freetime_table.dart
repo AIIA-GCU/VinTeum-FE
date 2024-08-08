@@ -13,13 +13,13 @@ class FreeTimeTable extends StatefulWidget {
 class _FreeTimeTableState extends State<FreeTimeTable> {
   List<String> week = ['월', '화', '수', '목', '금', '토', '일'];
   final columnLength = 30; // 세로 인덱스 길이
-  double firstHeight = 20;
-  double boxSize = 52; //한칸의 크기
+  double firstHeight = 20 * ratio.height;
+  double boxSize = 52 * ratio.height; //한칸의 크기
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: ratio.height * 768,
+      height: 15 * boxSize + firstHeight + 2,
       decoration: BoxDecoration(
         border: Border.all(color: VinTeumColors.darkgrey),
         borderRadius: BorderRadius.circular(12),
@@ -80,9 +80,9 @@ class _FreeTimeTableState extends State<FreeTimeTable> {
                 decoration: BoxDecoration(
                   color: ColorGenerator.getRandomColor(),
                 ),
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(2, 2, 7, 2),
-                ),
+                // child: Padding(
+                //   padding: const EdgeInsets.fromLTRB(2, 2, 7, 2),
+                // ),
               ),
             ),
           );
@@ -99,16 +99,16 @@ class _FreeTimeTableState extends State<FreeTimeTable> {
             Column(
               children: [
                 SizedBox(
-                  height: 20,
+                  height: firstHeight,
                   child: Text(
                     '${week[index]}',
                   ),
                 ),
                 ...List.generate(
-                  columnLength.toInt(),
+                  columnLength,
                       (index) => index % 2 == 0
                       ? const Divider(color: Colors.grey, height: 0)
-                      : SizedBox(height: boxSize, child: Container()),
+                      : SizedBox(height: boxSize),
                 ),
               ],
             ),

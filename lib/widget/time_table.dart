@@ -14,8 +14,9 @@ class TimeTable extends StatefulWidget {
 class _TimeTableState extends State<TimeTable> {
   List<String> week = ['월', '화', '수', '목', '금', '토', '일'];
   final columnLength = 30; // 세로 인덱스 길이
-  double firstHeight = 20;
-  double boxSize = 52; //한칸의 크기
+  double firstHeight = 20 * ratio.height;
+  double boxSize = 52 * ratio.height; //한칸의 크기
+
 
   void _showBottomSheet(
       {String? className, int? startTime, int? endTime, String? datTime}) {
@@ -47,7 +48,7 @@ class _TimeTableState extends State<TimeTable> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: ratio.height * 768,
+      height: 15 * boxSize + firstHeight + 3,
       decoration: BoxDecoration(
         border: Border.all(color: VinTeumColors.darkgrey),
         borderRadius: BorderRadius.circular(12),

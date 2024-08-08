@@ -222,6 +222,7 @@ class _TimetableScreenState extends State<TimetableScreen> {
                     color: Colors.white
                 ),
                 child: SingleChildScrollView(
+                  padding: EdgeInsets.all(10),
                   scrollDirection: Axis.vertical,
                   child: TimeTable(),
                 ),
