@@ -56,22 +56,19 @@ class _HelpScreenState extends State<HelpScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(help1_title, style: title),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 60),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              SizedBox(height: ratio.height * 30),
-                              Image.asset("assets/img/help1.png"),
-                              SizedBox(height: ratio.height * 30),
-                              Text(help1_content,
-                                  style: content, textAlign: TextAlign.center),
-                              SizedBox(height: ratio.height * 30),
-                              Text(help1_subContent,
-                                  style: subContent,
-                                  textAlign: TextAlign.center),
-                            ],
-                          ),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            SizedBox(height: ratio.height * 30),
+                            Image.asset("assets/img/help1.png"),
+                            SizedBox(height: ratio.height * 30),
+                            Text(help1_content,
+                                style: content, textAlign: TextAlign.center),
+                            SizedBox(height: ratio.height * 30),
+                            Text(help1_subContent,
+                                style: subContent,
+                                textAlign: TextAlign.center),
+                          ],
                         ),
                       ],
                     ),
