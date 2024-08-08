@@ -494,9 +494,24 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                     text: "로그인",
                                     width: 150,
                                     height: 48,
-                                    func: () {
-                                      if(_tryValidation() == 1) {
-                                        RestAPI.signIn(userId: UserIDController.text, pw: passwordController.text);
+                                    func: () async {
+                                      if(_tryValidation() == 1)  {
+                                        try {
+                                          await RestAPI.signIn(userId: UserIDController.text, pw: passwordController.text);
+                                        } catch (e) {
+                                          CustomDialog(
+                                              context: context,
+                                              title: "로그인에 실패하였습니다.",
+                                              dialogContent:
+                                              "유효한 아이디 혹은 비밀번호를 입력하세요.",
+                                              buttonText: "확인",
+                                              buttonCount: 1,
+                                              func: () {
+                                                setState(() {
+                                                  Navigator.pop(context);
+                                                });
+                                              });
+                                        }
                                       }
                                     },
                                     buttonCount: 1),

@@ -41,8 +41,8 @@ class RestAPI {
     try {
       final api = APIRequest('/user/login');
       Map<String, dynamic> response = await api.send(HTTPMethod.post, params: {
-        "userId": userId,
-        "pw": pw,
+        "loginId": userId,
+        "password": pw,
       }) ?? {};
       switch (response['status']) {
         case 200:
