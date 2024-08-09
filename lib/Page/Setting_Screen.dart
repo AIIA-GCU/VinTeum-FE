@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:vinteum/Common/color.dart';
 import 'package:vinteum/Page/Help_screen.dart';
+import 'package:vinteum/Server/session.dart';
 import 'package:vinteum/widget/custom_dialog.dart';
 import 'package:vinteum/widget/custom_switch.dart';
 import 'package:vinteum/Page/Home_Screen.dart';
@@ -46,7 +47,7 @@ class _SettingScreenState extends State<SettingScreen> {
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 45),
           child: Container(
               width: double.infinity,
-              height: ratio.height * 430,
+              height: ratio.height * 530,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12), color: Colors.white),
               child: Column(children: [
@@ -123,7 +124,36 @@ class _SettingScreenState extends State<SettingScreen> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10)),
                         padding:
-                            EdgeInsets.symmetric(horizontal: 17, vertical: 20)),
+                        EdgeInsets.symmetric(horizontal: 17, vertical: 20)),
+                    onPressed: () async {
+                      await Navigator.of(context).push(MaterialPageRoute(
+                        builder: (BuildContext context) =>
+                            HelpScreen(where: "setting",),
+                      ));
+                    },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Icon(Icons.help_outline, color: VinTeumColors.grey3),
+                        SizedBox(width: 12),
+                        Text(
+                          "도움말",
+                          style: TextStyle(color: VinTeumColors.grey3),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+                SizedBox(height: ratio.height * 30),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: OutlinedButton(
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.white,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10)),
+                        padding:
+                        EdgeInsets.symmetric(horizontal: 17, vertical: 20)),
                     onPressed: () {
                       CustomDialog(
                           context: context,
@@ -161,19 +191,29 @@ class _SettingScreenState extends State<SettingScreen> {
                             borderRadius: BorderRadius.circular(10)),
                         padding:
                         EdgeInsets.symmetric(horizontal: 17, vertical: 20)),
-                    onPressed: () async {
-                      await Navigator.of(context).push(MaterialPageRoute(
-                        builder: (BuildContext context) =>
-                            HelpScreen(where: "setting",),
-                      ));
+                    onPressed: () {
+                      CustomDialog(
+                          context: context,
+                          title: "회원 탈퇴",
+                          dialogContent: "탈퇴 하시겠습니까?",
+                          buttonText: "",
+                          buttonCount: 2, func: () async {
+                        final sessionProvider = SessionProvider();
+                        await sessionProvider.deleteJwtToken();
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    LoginSignupScreen()));
+                      });
                     },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Icon(Icons.help_outline, color: VinTeumColors.grey3),
+                        Icon(Icons.logout, color: VinTeumColors.grey3),
                         SizedBox(width: 12),
                         Text(
-                          "도움말",
+                          "회원 탈퇴",
                           style: TextStyle(color: VinTeumColors.grey3),
                         )
                       ],

@@ -50,6 +50,12 @@ class SessionProvider with ChangeNotifier {
       notifyListeners();
     }
   }
+  Future<void> deleteJwtToken() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.remove('jwtToken');
+    _jwtToken = null; //
+    notifyListeners(); //
+  }
 
   Future<void> saveUser(UserDTO user) async {
     final prefs = await SharedPreferences.getInstance();
