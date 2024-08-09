@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'Page/splash_Screen.dart';
 import 'Server/provider.dart';
 import 'Server/session.dart';
+import 'Server/user_dto.dart';
 late Size ratio;
 
 void main() {
@@ -22,6 +23,7 @@ class MyApp extends StatelessWidget {
           ChangeNotifierProvider(create: (_) => LoginProvider()),
           ChangeNotifierProvider(create: (_) => RegisterProvider()),
           ChangeNotifierProvider(create: (_) => SessionProvider()),
+          ChangeNotifierProvider(create: (_) => UserDTO()),
         ],
         child: MaterialApp(
         theme: ThemeData(
