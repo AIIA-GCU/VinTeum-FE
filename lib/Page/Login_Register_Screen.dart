@@ -365,6 +365,8 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                               buttonCount: 1,
                                               func: () {
                                                 setState(() {
+                                                  UserNameController.text = '';
+                                                  passwordVerifyingController.text = '';
                                                   UserIDController.text = '';
                                                   passwordController.text = '';
                                                   Navigator.pop(context);
