@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:vinteum/Common/color.dart';
 import 'package:vinteum/Page/Help_screen.dart';
 import 'package:vinteum/widget/custom_button.dart';
 import 'package:vinteum/Page/Alarm_Screen.dart';
 import 'package:vinteum/main.dart';
 import 'package:vinteum/Page/Setting_Screen.dart';
-import 'package:vinteum/widget/Group_List.dart';
+
+import '../Server/user_dto.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
-
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -20,12 +21,10 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> data = [
-      GroupList(title: "팀플 1조", number: 5),
-      GroupList(title: "밥약", number: 3),
-      GroupList(title: "프로그래밍 스터디", number: 7),
-      GroupList(title: "이건 어차피 안보일껄 ㅋㅋ", number: 7),
-    ];
+    List<Widget> data = context.watch<UserDTO>().authorities?.map((authority) {
+      return Text(authority);
+    }).toList() ?? [];
+    String? username = context.watch<UserDTO>().username;
     return Scaffold(
       backgroundColor: VinTeumColors.background,
       body: SafeArea(
@@ -79,7 +78,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     padding: const EdgeInsets.symmetric(vertical: 60),
                     child: Column(
                       children: [
-                        Text("아이아님, 반가워요!",
+                        Text("$username님, 반가워요!",
                             style: TextStyle(
                                 fontSize: 30,
                                 fontWeight: FontWeight.bold,

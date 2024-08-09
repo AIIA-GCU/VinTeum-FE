@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:vinteum/widget/custom_button.dart';
 import 'package:vinteum/main.dart';
 import 'package:vinteum/widget/custom_dialog.dart';
+import 'package:vinteum/widget/root_tab.dart';
 
 import '../Server/controller.dart'; // LoginRequest 및 loginUser 함수 가져오기
 
@@ -93,6 +94,8 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                             onTap: () {
                               setState(() {
                                 isSignupScreen = false;
+                                UserIDController.text = '';
+                                passwordController.text = '';
                               });
                             },
                             child: Column(
@@ -113,6 +116,8 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                             onTap: () {
                               setState(() {
                                 isSignupScreen = true;
+                                UserIDController.text = '';
+                                passwordController.text = '';
                               });
                             },
                             child: Column(
@@ -194,7 +199,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                     key: ValueKey(2),
                                     controller: UserIDController,
                                     validator: (value) {
-                                      if (value!.isEmpty || value.length < 9) {
+                                      if (value!.isEmpty || value.length < 6) {
                                         return '형식에 맞지 않습니다.';
                                       }
                                       return null;
@@ -360,8 +365,10 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                               buttonCount: 1,
                                               func: () {
                                                 setState(() {
-                                                  isSignupScreen = false;
+                                                  UserIDController.text = '';
+                                                  passwordController.text = '';
                                                   Navigator.pop(context);
+                                                  isSignupScreen = false;
                                                 });
                                               });
 
@@ -498,6 +505,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                       if(_tryValidation() == 1)  {
                                         try {
                                           await RestAPI.signIn(userId: UserIDController.text, pw: passwordController.text);
+                                          Navigator.push(context, MaterialPageRoute(builder: (context)=> RootTab()));
                                         } catch (e) {
                                           CustomDialog(
                                               context: context,
