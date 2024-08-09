@@ -7,7 +7,7 @@ class UserDTO with ChangeNotifier{
   final int? userId;
   final String? username;
   final String? password;
-  final String? nickname;
+  String? nickname;
   final List<String>? authorities;
 
   UserDTO({

@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:vinteum/Common/color.dart';
 import 'package:vinteum/Page/Help_screen.dart';
+import 'package:vinteum/Server/controller.dart';
 import 'package:vinteum/widget/custom_button.dart';
 import 'package:vinteum/Page/Alarm_Screen.dart';
 import 'package:vinteum/main.dart';
 import 'package:vinteum/Page/Setting_Screen.dart';
-
 import '../Server/user_dto.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -14,9 +14,21 @@ class HomeScreen extends StatefulWidget {
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
+
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+
+@override
+  void initState() {
+    super.initState();
+    callUsername(context);
+  }
+
+Future<void> callUsername(BuildContext context) async {
+  Map<String, dynamic>? username = await RestAPI.loadUsername();
+  context.read<UserDTO>().nickname = username as String?;
+}
 
 
   @override
@@ -24,7 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
     List<Widget> data = context.watch<UserDTO>().authorities?.map((authority) {
       return Text(authority);
     }).toList() ?? [];
-    String? username = context.watch<UserDTO>().username;
+    String? username = context.watch<UserDTO>().nickname;
     return Scaffold(
       backgroundColor: VinTeumColors.background,
       body: SafeArea(

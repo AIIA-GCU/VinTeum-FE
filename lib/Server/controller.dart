@@ -58,4 +58,35 @@ class RestAPI {
       rethrow;
     }
   }
+
+  static Future<Map<String, dynamic>?> createTeam(
+      {required String teamName}) async {
+    try {
+      final api = APIRequest('/team/create');
+      Map<String, dynamic> response =
+      await api.send(HTTPMethod.post, params: {
+        'teamName': teamName,
+      }) ?? {};
+      if (response['status'] == 200) return response['body'];
+      return null;
+    } on TimeoutException {
+      throw TimeoutException('transmission rate is too slow!');
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  static Future<Map<String, dynamic>?> loadUsername() async {
+    try {
+      final api = APIRequest('/user/nickname');
+      Map<String, dynamic> response = await api.send(HTTPMethod.get) ?? {};
+      if (response['status'] == 200) return response;
+      return null;
+    } on TimeoutException {
+      throw TimeoutException('transmission rate is too slow!');
+    } catch (e) {
+      rethrow;
+    }
+  }
 }
+

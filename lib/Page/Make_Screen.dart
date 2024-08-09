@@ -5,6 +5,7 @@ import 'package:vinteum/widget/custom_dialog.dart';
 import 'package:vinteum/Page/Home_Screen.dart';
 import 'package:vinteum/main.dart';
 import 'package:vinteum/widget/root_tab.dart';
+import 'package:vinteum/Server/controller.dart';
 
 class MakeScreen extends StatefulWidget {
   const MakeScreen({super.key, required this.selected, required this.callback});
@@ -73,6 +74,7 @@ class _MakeScreenState extends State<MakeScreen> {
                     setState(() {
                       selected = true;
                       if (groupNameController.text.isNotEmpty) {
+                        RestAPI.createTeam(teamName: groupNameController.text);
                         CustomDialog(
                             context: context,
                             title: "그룹 생성",
