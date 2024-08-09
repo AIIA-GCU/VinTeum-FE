@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:vinteum/Common/color.dart';
+import 'package:vinteum/Server/controller.dart';
+import 'package:vinteum/widget/custom_dialog.dart';
 
 class settingDialog extends StatefulWidget {
   const settingDialog({super.key});
@@ -124,23 +126,45 @@ class _nameDialogState extends State<nameDialog> {
           actions: <Widget>[
             Center(
                 child: TextButton(
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: VinTeumColors.mainBlue,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
-                      )),
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  child: Text(
-                    "저장",
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
-                  ),
-                ))
+              style: ElevatedButton.styleFrom(
+                  backgroundColor: VinTeumColors.mainBlue,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  )),
+              onPressed: () {
+                if (_nameController.text.isEmpty) {
+                  CustomDialog(
+                      context: context,
+                      title: "이름 변경",
+                      dialogContent: "이름을 입력해주세요.",
+                      buttonText: "확인",
+                      buttonCount: 1,
+                      func: () {
+                        Navigator.pop(context);
+                      });
+                } else {
+                  CustomDialog(
+                      context: context,
+                      title: "이름 변경",
+                      dialogContent: "이름 변경이 완료되었습니다.",
+                      buttonText: "확인",
+                      buttonCount: 1,
+                      func: () {
+                        RestAPI.changeUsername(newName: _nameController.text);
+                        Navigator.pop(context);
+                        Navigator.pop(context);
+                      });
+                }
+              },
+              child: Text(
+                "저장",
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+            ))
           ],
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(10)),
