@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:provider/provider.dart';
 import 'package:vinteum/Server/rest_api.dart';
 import 'package:vinteum/Server/session.dart';
 import 'user_dto.dart';
@@ -46,6 +47,11 @@ class RestAPI {
       }) ?? {};
       switch (response['status']) {
         case 200:
+          final jwtToken = JwtToken.fromJson(response['body']);
+          final sessionProvider = SessionProvider();
+          await sessionProvider.saveJwtToken(jwtToken);
+          print('JWT Token successfully saved.');
+
           return JwtToken.fromJson(response['body']);
         case 400:
           throw 400;
@@ -80,7 +86,24 @@ class RestAPI {
     try {
       final api = APIRequest('/user/nickname');
       Map<String, dynamic> response = await api.send(HTTPMethod.get) ?? {};
-      if (response['status'] == 200) return response;
+      if (response['status'] == 200) return response['body'];
+      return null;
+    } on TimeoutException {
+      throw TimeoutException('transmission rate is too slow!');
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  static Future<Map<String, dynamic>?> changeUsername(
+      {required String newName}) async {
+    try {
+      final api = APIRequest('/user/nickname');
+      Map<String, dynamic> response =
+          await api.send(HTTPMethod.put, params: {
+            'newName': newName,
+          }) ?? {};
+      if (response['status'] == 200) return response['body'];
       return null;
     } on TimeoutException {
       throw TimeoutException('transmission rate is too slow!');
