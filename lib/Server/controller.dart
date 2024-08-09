@@ -103,7 +103,7 @@ class RestAPI {
     try {
       final api = APIRequest('/user/nickname');
       Map<String, dynamic> response = await api.send(HTTPMethod.get) ?? {};
-      if (response['status'] == 200) return response['body'].toString();
+      if (response['status'] == 200) return response['body']['nickname'].toString();
       return null;
     } on TimeoutException {
       throw TimeoutException('transmission rate is too slow!');

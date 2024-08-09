@@ -22,13 +22,19 @@ class _HomeScreenState extends State<HomeScreen> {
 @override
   void initState() {
     super.initState();
-    callUsername(context);
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      callUsername(context);
+    });
   }
 
 Future<void> callUsername(BuildContext context) async {
   String? username = await RestAPI.loadUsername();
-  context.read<UserDTO>().nickname = username;
+  if (username != null) {
+    context.read<UserDTO>().nickname = username;
+    setState(() {});
+  }
 }
+
 
 
   @override
