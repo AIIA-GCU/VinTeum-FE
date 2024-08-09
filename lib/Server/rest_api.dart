@@ -1,26 +1,10 @@
-///
-/// Session: 세션을 관리하는 파일
-/// - Stateless: 로그인 후, 글쓰기 요청을 하면
-///
-/// Todo
-/// @ room 종류: ["405-4", "405-5", "405-6"] 중 하나
-/// @ date 형식: "yyyy-MM-dd HH:mm"
-/// @ photoExtension: *.jpg, *.png
-/// @ 쿠기 저장하기 (w현교)
-/// @ 예약/인증 추가에 leader의 정보는 X
-///   member의 정보는 "(학번) (이름) (학번) (이름) ..."
-///
-
 import 'dart:async';
 import 'dart:convert';
-
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
+import 'package:vinteum/Server/session.dart';
 
-import 'session.dart';
-
-/// http method
-enum HTTPMethod { get, post, patch, delete }
+enum HTTPMethod { get, post, patch, put, delete }
 
 class APIRequest {
   static const String _baseUrl = "http://210.102.178.161:8081";
@@ -31,9 +15,7 @@ class APIRequest {
 
   String get path => _path;
 
-
   set setPath(String val) => _path = val;
-
 
   Future<dynamic> send(HTTPMethod method, {Map<String, dynamic>? params}) async {
     try {
@@ -50,25 +32,25 @@ class APIRequest {
         case HTTPMethod.patch:
           request = http.Request('PATCH', uri);
           break;
+        case HTTPMethod.put:
+          request = http.Request('PUT', uri);
+          break;
         case HTTPMethod.delete:
           request = http.Request('DELETE', uri);
           break;
       }
 
-      // try {
-      //   final sessionToken = await session.get();
-      //   setCookies = {_sessionCookieName: sessionToken};
-      // } catch (_) {
-      //   setCookies = {};
-      // }
-
-      // final info = await PackageInfo.fromPlatform();
-
       final headers = {
         'User-Agent': 'VinTeum/1.0.0',
         'Content-Type': 'application/json; charset=UTF-8',
-        // 'Cookie': _encodeCookie(),
       };
+      final sessionProvider = SessionProvider();
+      await sessionProvider.loadJwtToken(); // 토큰을 로드
+      final jwtToken = sessionProvider.jwtToken;
+
+      if (jwtToken != null) {
+        headers['Authorization'] = 'Bearer ${jwtToken.accessToken}';
+      }
 
       request.headers.addAll(headers);
 
