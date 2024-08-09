@@ -10,7 +10,6 @@ import 'package:vinteum/widget/dialog.dart';
 import 'package:vinteum/main.dart';
 import 'package:vinteum/widget/root_tab.dart';
 
-
 class SettingScreen extends StatefulWidget {
   const SettingScreen({super.key});
 
@@ -35,7 +34,8 @@ class _SettingScreenState extends State<SettingScreen> {
         backgroundColor: VinTeumColors.background,
         leading: IconButton(
           onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => RootTab()));
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => RootTab()));
           },
           icon: Icon(Icons.arrow_back_ios),
         ),
@@ -124,11 +124,12 @@ class _SettingScreenState extends State<SettingScreen> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10)),
                         padding:
-                        EdgeInsets.symmetric(horizontal: 17, vertical: 20)),
+                            EdgeInsets.symmetric(horizontal: 17, vertical: 20)),
                     onPressed: () async {
                       await Navigator.of(context).push(MaterialPageRoute(
-                        builder: (BuildContext context) =>
-                            HelpScreen(where: "setting",),
+                        builder: (BuildContext context) => HelpScreen(
+                          where: "setting",
+                        ),
                       ));
                     },
                     child: Row(
@@ -153,20 +154,31 @@ class _SettingScreenState extends State<SettingScreen> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10)),
                         padding:
-                        EdgeInsets.symmetric(horizontal: 17, vertical: 20)),
+                            EdgeInsets.symmetric(horizontal: 17, vertical: 20)),
                     onPressed: () {
                       CustomDialog(
                           context: context,
                           title: "로그아웃",
                           dialogContent: "로그아웃 하시겠습니까?",
                           buttonText: "",
-                          buttonCount: 2, func: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    LoginSignupScreen()));
-                      });
+                          buttonCount: 2,
+                          func: () async {
+                            final sessionProvider = SessionProvider();
+                            await sessionProvider.deleteJwtToken();
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => LoginSignupScreen()));
+                            CustomDialog(
+                                context: context,
+                                title: "로그아웃",
+                                dialogContent: "로그아웃이 완료되었습니다.",
+                                buttonText: "확인",
+                                buttonCount: 1,
+                                func: () {
+                                  Navigator.pop(context);
+                                });
+                          });
                     },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -190,22 +202,31 @@ class _SettingScreenState extends State<SettingScreen> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10)),
                         padding:
-                        EdgeInsets.symmetric(horizontal: 17, vertical: 20)),
+                            EdgeInsets.symmetric(horizontal: 17, vertical: 20)),
                     onPressed: () {
                       CustomDialog(
                           context: context,
                           title: "회원 탈퇴",
                           dialogContent: "탈퇴 하시겠습니까?",
                           buttonText: "",
-                          buttonCount: 2, func: () async {
-                        final sessionProvider = SessionProvider();
-                        await sessionProvider.deleteJwtToken();
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    LoginSignupScreen()));
-                      });
+                          buttonCount: 2,
+                          func: () async {
+                            final sessionProvider = SessionProvider();
+                            await sessionProvider.deleteJwtToken();
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => LoginSignupScreen()));
+                            CustomDialog(
+                                context: context,
+                                title: "회원 탈퇴",
+                                dialogContent: "탈퇴가 완료되었습니다.",
+                                buttonText: "확인",
+                                buttonCount: 1,
+                                func: () {
+                                  Navigator.pop(context);
+                                });
+                          });
                     },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
