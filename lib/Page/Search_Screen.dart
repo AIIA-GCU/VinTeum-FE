@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vinteum/Server/controller.dart';
 import 'package:vinteum/widget/custom_button.dart';
 import 'package:vinteum/widget/custom_dialog.dart';
 import 'package:vinteum/main.dart';
@@ -65,6 +66,7 @@ class _SearchScreenState extends State<SearchScreen> {
                   func: () {
                     setState(() {
                       if (codeNameController.text.isNotEmpty) {
+                        RestAPI.joinTeam(joinCode: codeNameController.text);
                         CustomDialog(
                             context: context,
                             title: "그룹 생성",

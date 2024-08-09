@@ -76,6 +76,23 @@ class RestAPI {
     }
   }
 
+  static Future<Map<String, dynamic>?> joinTeam(
+      {required String joinCode}) async {
+    try {
+      final api = APIRequest('/team/join');
+      Map<String, dynamic> response =
+          await api.send(HTTPMethod.post, params: {
+            'joinCode': joinCode,
+          }) ?? {};
+      if (response['status'] == 200) return response['body'];
+      return null;
+    } on TimeoutException {
+      throw TimeoutException('transmission rate is too slow!');
+    } catch (e) {
+      rethrow;
+    }
+  }
+
   static Future<Map<String, dynamic>?> loadUsername() async {
     try {
       final api = APIRequest('/user/nickname');
