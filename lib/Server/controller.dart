@@ -99,11 +99,11 @@ class RestAPI {
     }
   }
 
-  static Future<Map<String, dynamic>?> loadUsername() async {
+  static Future<String?> loadUsername() async {
     try {
       final api = APIRequest('/user/nickname');
       Map<String, dynamic> response = await api.send(HTTPMethod.get) ?? {};
-      if (response['status'] == 200) return response['body'];
+      if (response['status'] == 200) return response['body'].toString();
       return null;
     } on TimeoutException {
       throw TimeoutException('transmission rate is too slow!');
@@ -112,13 +112,13 @@ class RestAPI {
     }
   }
 
-  static Future<Map<String, dynamic>?> changeUsername(
-      {required String newName}) async {
+  static Future<NickNameResponseDTO?> changeUsername(
+      {required String newNickName}) async {
     try {
       final api = APIRequest('/user/nickname');
       Map<String, dynamic> response =
           await api.send(HTTPMethod.put, params: {
-            'newName': newName,
+            'newNickName': newNickName,
           }) ?? {};
       if (response['status'] == 200) return response['body'];
       return null;

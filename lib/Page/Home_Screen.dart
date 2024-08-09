@@ -26,8 +26,8 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
 Future<void> callUsername(BuildContext context) async {
-  Map<String, dynamic>? username = await RestAPI.loadUsername();
-  context.read<UserDTO>().nickname = username as String?;
+  String? username = await RestAPI.loadUsername();
+  context.read<UserDTO>().nickname = username;
 }
 
 

@@ -52,3 +52,24 @@ class UserDTO with ChangeNotifier{
 //     print('failed: ${response.statusCode}');
 //   }
 // }
+
+
+class NickNameResponseDTO with ChangeNotifier{
+  final String? nickname;
+
+  NickNameResponseDTO({
+    this.nickname,
+  });
+
+  factory NickNameResponseDTO.fromJson(Map<String, dynamic> json) {
+    return NickNameResponseDTO(
+      nickname: json['nickname'],
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'nickname': nickname,
+    };
+  }
+}

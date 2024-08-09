@@ -69,7 +69,7 @@ class _SearchScreenState extends State<SearchScreen> {
                         RestAPI.joinTeam(joinCode: codeNameController.text);
                         CustomDialog(
                             context: context,
-                            title: "그룹 생성",
+                            title: "그룹 참여 성공",
                             buttonText: "확인",
                             dialogContent: "그룹 침여가 완료되었습니다.",
                             buttonCount: 1,
@@ -81,8 +81,8 @@ class _SearchScreenState extends State<SearchScreen> {
                       } else {
                         CustomDialog(
                             context: context,
-                            title: "그룹 참여",
-                            dialogContent: "참여 코드를 입력해주세요.",
+                            title: "그룹 참여 실패",
+                            dialogContent: "유효한 참여 코드를 입력해주세요.",
                             buttonText: "확인",
                             buttonCount: 1,
                             func: () {

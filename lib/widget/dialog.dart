@@ -150,7 +150,7 @@ class _nameDialogState extends State<nameDialog> {
                       buttonText: "확인",
                       buttonCount: 1,
                       func: () {
-                        RestAPI.changeUsername(newName: _nameController.text);
+                        RestAPI.changeUsername(newNickName: _nameController.text);
                         Navigator.pop(context);
                         Navigator.pop(context);
                       });
